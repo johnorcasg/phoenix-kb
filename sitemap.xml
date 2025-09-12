@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/index.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/operating-instructions.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/pipelines-stages.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/seller-options.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/agent-playbook.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/local-facts-hampton-roads.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/compliance-sensitive.html</loc></url>
-  <url><loc>https://github.com/johnorcasg/phoenix-kb.git/faq.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/index.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/operating-instructions.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/pipelines-stages.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/seller-options.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/agent-playbook.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/local-facts-hampton-roads.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/compliance-sensitive.html</loc></url>
+  <url><loc>https://github.com/johnorcasg/phoenix-kb/blob/main/faq.html</loc></url>
 </urlset>
