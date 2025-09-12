@@ -17,7 +17,7 @@ This folder contains a crawler-friendly microsite for Go High Level's Web Crawle
   - `robots.txt`
   - the `<link rel="canonical">` in each HTML file's `<head>`
 - After publishing, verify:
-  - `https://github.com/johnorcasg/phoenix-kb.git/index.html`
+  - `https://github.com/johnorcasg/phoenix-kb/edit/main/index.html`
   - `ttps://github.com/johnorcasg/phoenix-kb.git/sitemap.xml`
   - `ttps://github.com/johnorcasg/phoenix-kb.git/robots.txt`
 
