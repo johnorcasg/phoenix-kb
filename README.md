@@ -6,7 +6,7 @@ This folder contains a crawler-friendly microsite for Go High Level's Web Crawle
 1. Create a public repo named `phoenix-kb`.
 2. Add these files and commit.
 3. In Repo Settings → Pages: Deploy from `main` branch → `/root`.
-4. Your site will be at `ttps://github.com/johnorcasg/phoenix-kb.git`.
+4. Your site will be at `https://github.com/johnorcasg/phoenix-kb/blob/main`.
 
 ## Deploy (Netlify/Vercel/S3)
 - Upload this folder as a static site. Root path should contain `index.html`.
@@ -18,11 +18,11 @@ This folder contains a crawler-friendly microsite for Go High Level's Web Crawle
   - the `<link rel="canonical">` in each HTML file's `<head>`
 - After publishing, verify:
   - `https://github.com/johnorcasg/phoenix-kb/edit/main/index.html`
-  - `ttps://github.com/johnorcasg/phoenix-kb.git/sitemap.xml`
-  - `ttps://github.com/johnorcasg/phoenix-kb.git/robots.txt`
+  - `https://github.com/johnorcasg/phoenix-kb/blob/main/sitemap.xml`
+  - `https://github.com/johnorcasg/phoenix-kb/blob/main/robots.txt`
 
 ## Add to GHL Web Crawler
-- Start URL: your root (e.g., `ttps://github.com/johnorcasg/phoenix-kb.git`).
+- Start URL: your root (e.g., `https://github.com/johnorcasg/phoenix-kb/blob/main`).
 - Also add your `sitemap.xml` URL to ensure full coverage.
 
 ## Content
