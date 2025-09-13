@@ -9,7 +9,7 @@
   },
   "knowledgeBase": {
     "index_file": "index.yml",
-    "repository": "https://github.com/YOUR_ORG/Phoenix-KB",
+    "repository": "https://github.com/johnorcasg/phoenix-kb/blob/main",
     "crawler": {
       "enabled": true,
       "interval": "24h",
