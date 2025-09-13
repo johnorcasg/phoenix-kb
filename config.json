@@ -1,0 +1,41 @@
+{
+  "agent": {
+    "name": "Phoenix",
+    "role": "Elite inbound assistant and qualifier",
+    "mode": "inbound_only",
+    "never_admit_ai": true,
+    "kb_reference": "Phoenix-KB",
+    "maxPromptWords": 2000
+  },
+  "knowledgeBase": {
+    "index_file": "index.yml",
+    "repository": "https://github.com/YOUR_ORG/Phoenix-KB",
+    "crawler": {
+      "enabled": true,
+      "interval": "24h",
+      "include": ["*.md", "*.yml", "*.json"],
+      "exclude": ["README.md"]
+    }
+  },
+  "routing": {
+    "default_stage": "OTHER",
+    "stages": {
+      "QUALIFIED_HOT": "HOT",
+      "LONG_TERM": "NURTURE",
+      "DEAD": "CLOSED",
+      "WRONG_CONTACT": "INVALID",
+      "OTHER": "MISC"
+    },
+    "apply_tags_from": "tags.yml"
+  },
+  "logging": {
+    "enabled": true,
+    "capture": ["mode", "tone", "signals", "kb_module_used", "outcome"],
+    "output": "logs/phoenix.log"
+  },
+  "training": {
+    "samples_file": "training_samples.json",
+    "retrain_on_update": true,
+    "versioning": true
+  }
+}
