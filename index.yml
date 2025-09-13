@@ -1,22 +1,135 @@
-# Phoenix-KB Index
-modules:
-  - seller_qualification.md
-  - objections_library.md
-  - objection_micro_moves.md
-  - elite_question_stacking.md
-  - dr_psych_principles.md
-  - emotional_intelligence.md
-  - rapport_foundations.md
-  - rapport_playbook.md
-  - trust_blueprints.md
-  - prosody_precision.md
-  - prosody_tone_guidance.md
-  - pro_routing.md
-  - routing_cues.md
-  - buyer_intake.md
+# index.yml — Phoenix-KB ingestion index
+# Purpose: give crawlers a structured map with priorities, categories, and tags.
 
-shared:
-  - tags.yml
-  - responses.md
-  - integration.md
-  - training_samples.json
+kb:
+  name: Phoenix-KB
+  version: 1.0
+  default_language: en
+  sitemap: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/sitemap.xml
+
+groups:
+  - id: persona_prosody
+    title: Persona, Prosody & Emotion
+    priority: 1.0
+    docs:
+      - title: Phoenix Persona & Call Open/Close
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/call_opening_and_closing.md
+        tags: [persona, greeting, closing, etiquette]
+        priority: 1.0
+      - title: Prosody Precision
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/prosody_precision.md
+        tags: [prosody, pacing, pitch, pauses]
+        priority: 0.95
+      - title: Prosody Tone Guidance
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/prosody_tone_guidance.md
+        tags: [tone, mirroring, calibration]
+        priority: 0.95
+      - title: Emotional Intelligence
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/emotional_intelligence.md
+        tags: [empathy, validation, regulation]
+        priority: 0.95
+      - title: Trust Blueprints
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/trust_blueprints.md
+        tags: [trust, credibility, authority]
+        priority: 0.9
+      - title: Rapport Foundations
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/rapport_foundations.md
+        tags: [rapport, mirroring, pacing, labels]
+        priority: 0.9
+      - title: Rapport Playbook
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/rapport_playbook.md
+        tags: [scripts, micro-moves, transitions]
+        priority: 0.9
+      - title: DR Psychology Principles
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/dr_psych_principles.md
+        tags: [psychology, persuasion, objections]
+        priority: 0.9
+
+  - id: objection_handling
+    title: Objection Handling
+    priority: 0.95
+    docs:
+      - title: Objections Library
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objections_library.md
+        tags: [objections, rebuttals, scripts]
+        priority: 0.95
+      - title: Objection Micro Moves
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objection_micro_moves.md
+        tags: [calibrated-questions, labels, pivots]
+        priority: 0.95
+      - title: Responses Reference
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/responses.md
+        tags: [acknowledgments, bridges, clarifiers]
+        priority: 0.9
+
+  - id: qualification_routing
+    title: Qualification & Routing
+    priority: 0.9
+    docs:
+      - title: Seller Qualification
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/seller_qualification.md
+        tags: [condition, motivation, timeline, price]
+        priority: 0.9
+      - title: Buyer Intake
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/buyer_intake.md
+        tags: [buyer, intake, criteria]
+        priority: 0.85
+      - title: Pro Routing (Decisioning Rules)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/pro_routing.md
+        tags: [routing, tagging, outcomes]
+        priority: 0.9
+      - title: Routing Cues
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/routing_cues.md
+        tags: [signals, thresholds, triggers]
+        priority: 0.85
+      - title: Agent Handling
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/agent_handling.md
+        tags: [agent, lender, vendor, escalation]
+        priority: 0.85
+      - title: Wrong Number or Misc
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/wrong_number_or_misc.md
+        tags: [wrong-contact, misc, compliance]
+        priority: 0.8
+      - title: Elite Question Stacking
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/elite_question_stacking.md
+        tags: [discovery, stacking, funnels]
+        priority: 0.9
+
+  - id: operations_integration
+    title: Operations & Integration
+    priority: 0.85
+    docs:
+      - title: Integration Guide
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/integration.md
+        tags: [ghl, vapi, webhooks, crm]
+        priority: 0.85
+      - title: Phoenix KB Build Script
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/phoenix_kb_build.py
+        tags: [script, tooling, build]
+        priority: 0.8
+      - title: Config (KB)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/config.json
+        tags: [config, weights, sources]
+        priority: 0.8
+      - title: Index (this file)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/index.yml
+        tags: [index, manifest]
+        priority: 0.8
+      - title: Robots
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/robots.txt
+        tags: [crawl, allow, sitemap]
+        priority: 0.7
+
+defaults:
+  chunking:
+    max_tokens: 1200
+    overlap_tokens: 120
+  cleaning:
+    strip_headers: true
+    strip_tables: false
+    normalize_whitespace: true
+  embeddings:
+    policy: "prefer-raw"
+    ignore_sections:
+      - "Change Log"
+      - "Legal"
