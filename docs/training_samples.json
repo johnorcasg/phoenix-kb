@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "notes": "Training utterances to validate complaint vs explicit opt-out routing, ownership confirm, and qualification pivot. These are NOT for crawling—use for unit tests or manual eval.",
+  "samples": [
+    {
+      "id": "complaint_generic_owner_confirm",
+      "input": "I keep getting messages from this number.",
+      "expect_detect": "possible_complaint",
+      "expect_route": "route.complaint_acknowledge_then_confirm",
+      "expect_say_contains": ["we reached out about", "{{contact.address1}}", "{{contact.city}}", "Are you the one connected"],
+      "next_question": "owner_confirm",
+      "negative_expect": ["You won't hear from us again"]
+    },
+    {
+      "id": "complaint_generic_variant",
+      "input": "You keep texting me. What is this about?",
+      "expect_detect": "possible_complaint",
+      "expect_route": "route.complaint_acknowledge_then_confirm",
+      "expect_say_contains": ["context", "{{contact.address1}}", "is that yours"],
+      "next_question": "owner_confirm"
+    },
+    {
+      "id": "explicit_opt_out_hard",
+      "input": "Remove me from your list. Do not contact me again.",
+      "expect_detect": "explicit_opt_out",
+      "expect_route": "route.opt_out_hard",
+      "expect_tag": "DEAD",
+      "expect_stage": "CLOSED",
+      "expect_flags": { "setDoNotContact": true },
+      "expect_say_contains": ["You won’t hear from us again"]
+    },
+    {
+      "id": "wrong_contact_after_complaint",
+      "input": "I keep getting messages, but I don’t own that address.",
+      "expect_detect": "possible_complaint",
+      "flow": [
+        {"agent": "acknowledge + purpose + owner_confirm"},
+        {"caller": "No, that's not my place."}
+      ],
+      "expect_tag": "WRONG_CONTACT",
+      "expect_exit": true,
+      "expect_say_contains": ["Thanks for letting me know", "update", "records"]
+    },
+    {
+      "id": "owner_yes_pivot_to_gauge",
+      "input": "Yeah that’s my house. Why are you contacting me?",
+      "expect_detect": "possible_complaint",
+      "flow": [
+        {"agent": "acknowledge + purpose + owner_confirm"},
+        {"caller": "Yes, I own it."}
+      ],
+      "expect_next": "step2_gaugeSelling",
+      "expect_say_contains": ["Would you be open to selling", "consider letting it go"]
+    },
+    {
+      "id": "soft_pushback_not_optout",
+      "input": "Stop spamming me with these messages, what do you want?",
+      "expect_detect": "possible_complaint",
+      "expect_route": "route.complaint_acknowledge_then_confirm",
+      "expect_say_not_contains": ["remove this number", "do not contact"],
+      "expect_say_contains": ["we reached out about", "{{contact.address1}}", "is that yours"]
+    },
+    {
+      "id": "explicit_opt_out_short",
+      "input": "Don't call again.",
+      "expect_detect": "explicit_opt_out",
+      "expect_route": "route.opt_out_hard",
+      "expect_tag": "DEAD",
+      "expect_flags": { "setDoNotContact": true },
+      "expect_exit": true
+    },
+    {
+      "id": "neutral_who_is_this",
+      "input": "Who is this?",
+      "expect_detect": "possible_complaint",
+      "expect_route": "route.complaint_acknowledge_then_confirm",
+      "expect_say_contains": ["we reached out about", "{{contact.address1}}", "{{contact.city}}"]
+    },
+    {
+      "id": "owner_yes_not_ready",
+      "input": "Yes that's mine, but I'm not looking to do anything now.",
+      "start_detect": "possible_complaint",
+      "flow": [
+        {"agent": "acknowledge + purpose + owner_confirm"},
+        {"caller": "Yes owner"},
+        {"agent": "step2_gaugeSelling"},
+        {"caller": "No, not interested now"}
+      ],
+      "expect_tag": "LONG_TERM",
+      "expect_stage": "NURTURE",
+      "expect_say_contains": ["Totally fine", "check back"]
+    }
+  ]
+}
