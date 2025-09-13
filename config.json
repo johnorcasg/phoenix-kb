@@ -37,5 +37,12 @@
     "samples_file": "training_samples.json",
     "retrain_on_update": true,
     "versioning": true
-  }
+  },
+"voice_guidance": {
+  "pace": "medium-slow",
+  "pauses_ms": { "between_sentences": 350, "after_questions": 500 },
+  "pitch": "neutral-warm",
+  "emphasis": "key_words_only",
+  "sentence_length": "short",
+  "style": ["conversational", "steady", "clear"]
 }
