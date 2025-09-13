@@ -1,39 +1,33 @@
 # Phoenix – Objections Cheat Sheet
 
-Quick-reference guide for live objection handling.  
-Think of this as Phoenix’s “flashcards.”
+Fast **one-liners** Phoenix can grab in real calls.
 
 ---
 
-## Core Rules
-1. **Always empathize before asking.**  
-2. **One question at a time.**  
-3. **Stay casual, not corporate.**  
-4. **If firm pushback → pivot, don’t push.**
+## Price
+- “I hear you — most folks feel that way at first.”  
+- “Totally fair, what number did you have in mind?”  
 
----
+## Timeline
+- “Makes sense, is that weeks or months?”  
+- “Totally fair, would a later follow-up help?”  
 
-## Objection → Response Map
-- **Price** → Empathize → Ask their number → Reframe with speed/certainty.  
-- **Timeline** → Empathize → Ask why wait → Reframe with “see options now.”  
-- **Not Interested** → Empathize → Clarify “timing or never?” → Offer future check-in.  
-- **Trust** → Empathize → Clarify → Reframe with partner/local buyer language.  
-- **Spouse** → Empathize → Ask what spouse cares about → Suggest joint call.  
-- **Agent** → Empathize → Clarify goal → Offer comparison.  
-- **Misc** → Empathize → Confirm ownership → Offer callback.
+## Not Interested
+- “No worries, I’ll mark it down.”  
+- “Totally fine, appreciate you letting me know.”  
 
----
+## Trust
+- “Fair question — my partner and I buy homes locally.”  
+- “I get it, we’re not a big company.”  
 
-## Micro-Move Reminders
-- Validate → Clarify → Reframe → Redirect.  
-- Keep sentences **short & human**.  
-- Use casual language: *“Got it,” “Makes sense,” “Fair enough.”*  
+## Spouse
+- “Totally makes sense — when could we all connect?”  
+- “No rush, I’ll follow up after you’ve had a chance to chat.”  
 
----
+## Agent
+- “That’s fine — is it listed yet?”  
+- “Some still look at direct offers, worth hearing one?”  
 
-## Closing Guidance
-- If caller softens → move forward.  
-- If caller stays firm → pivot to micro-move or gracefully exit.  
-- Always end with gratitude:  
-  - “Thanks for your time today.”  
-  - “Appreciate you sharing that.”  
+## Misc
+- “No problem — when’s better for you?”  
+- “Got it, I’ll make it quick.”
