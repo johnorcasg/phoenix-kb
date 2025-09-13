@@ -1,0 +1,22 @@
+# Phoenix-KB Index
+modules:
+  - seller_qualification.md
+  - objections_library.md
+  - objection_micro_moves.md
+  - elite_question_stacking.md
+  - dr_psych_principles.md
+  - emotional_intelligence.md
+  - rapport_foundations.md
+  - rapport_playbook.md
+  - trust_blueprints.md
+  - prosody_precision.md
+  - prosody_tone_guidance.md
+  - pro_routing.md
+  - routing_cues.md
+  - buyer_intake.md
+
+shared:
+  - tags.yml
+  - responses.md
+  - integration.md
+  - training_samples.json
