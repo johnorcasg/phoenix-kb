@@ -1,70 +1,77 @@
-# Phoenix – Elite Inbound Call Agent
+# Phoenix Knowledge Base (Phoenix-KB)
 
-## 🚀 Overview
-Phoenix is an inbound AI voice assistant designed to **handle all inbound calls across {{contact.city}}** with elite-level professionalism.  
-She adapts her **personality and communication style** to match the caller’s tone, reducing defenses, building rapport, and qualifying leads with precision.  
+Phoenix is an **elite inbound call assistant** designed to handle all types of calls — sellers, agents, buyers, lenders, or misc — with precision, empathy, and authority.  
 
-Phoenix is trained to **consult the Knowledge Base (KB)** for scripts, flows, and specialized handling — keeping the main prompt focused on **her personality, tonality, and communication expertise**.  
-
----
-
-## 🎯 Core Capabilities
-- **Caller Type Detection** → Identifies whether the caller is a **Seller, Agent, Lender, Wrong Number, or Miscellaneous**.  
-- **Dynamic Personality Switching** → Switches between:  
-  - 🟢 *Empathetic Consultant* (warm, validating, collaborative)  
-  - 🔵 *Strategic Negotiator* (calm, factual, confident)  
-- **Rapport Mastery** → Uses psychology-backed techniques: pacing, mirroring, validating language, and natural affirmations.  
-- **Qualification (via KB)** → Handles the 4 seller pillars: **Condition, Motivation, Timeline, Price**.  
-- **CRM Tagging & Routing** → Outcomes are auto-tagged:  
-  - `QUALIFIED_HOT` – Ready to move forward  
-  - `LONG_TERM` – Nurture needed  
-  - `DEAD` – Not viable  
-  - `WRONG_CONTACT` – Caller not owner/connected  
-  - `OTHER` – Agents, lenders, misc.  
+The system is modular:  
+- **Main Prompt** → Defines Phoenix’s personality, voice, and high-level behavior.  
+- **Knowledge Base (KB)** → A library of specialized playbooks Phoenix consults in real time.  
 
 ---
 
-## 📂 Knowledge Base (Phoenix-KB)
-Phoenix relies on modular `.md` files for guidance on different call types:  
+## 📚 Knowledge Modules
 
-- **SellerQualification.md** – Confirm ownership, selling interest, and 4 pillars.  
-- **AgentHandling.md** – Scripts for agent outreach (listing/buyer agents).  
-- **LenderHandling.md** – Conversations with lenders or partners.  
-- **WrongNumber.md** – Graceful exits for wrong contacts.  
-- **CallOpenings.md** – Variations of greetings and tone-matched intros.  
-- **CallClosings.md** – Professional endings with gratitude + next steps.  
-- **ObjectionHandling.md** – Psychology-driven rebuttals and rapport techniques.  
+### Seller Handling
+- **seller_qualification.md** – Core seller flow (ownership, interest, 4 pillars: Condition, Motivation, Timeline, Price).  
+- **objections_library.md** – Full catalog of common objections and validated responses.  
+- **objection_micro_moves.md** – Bite-sized objection handling tactics (acknowledge → align → pivot).  
 
----
+### Communication Mastery
+- **elite_question_stacking.md** – Advanced question stacking for flow and clarity.  
+- **dr_psych_principles.md** – Doctor–Patient style communication framework.  
+- **emotional_intelligence.md** – How Phoenix reads and adapts to caller emotions.  
+- **rapport_foundations.md** – Building trust, safety, pacing, and validation.  
+- **rapport_playbook.md** – Specific scripts for sellers, agents, and lenders.  
+- **trust_blueprints.md** – Anchors for building lasting credibility.  
 
-## 📞 High-Level Call Flow
-1. **Greet Warmly** – Open the call naturally.  
-2. **Identify Caller Type** – Use KB to guide detection.  
-3. **Engage Accordingly** – Match mode (Empathetic Consultant / Strategic Negotiator).  
-4. **Consult KB** – Apply relevant module (seller, agent, lender, etc.).  
-5. **Capture Info** – Save name, phone, email, and property info where relevant.  
-6. **Tag Outcome** – QUALIFIED_HOT, LONG_TERM, DEAD, WRONG_CONTACT, OTHER.  
-7. **Close Call** – Thank caller, provide clear next steps.  
+### Prosody & Tonality
+- **prosody_precision.md** – Exact pitch, pacing, and pauses per caller type.  
+- **prosody_tone_guidance.md** – Direction for tone shifts in questions/statements.  
 
----
+### Routing & Tagging
+- **pro_routing.md** – High-level outcome rules (QUALIFIED_HOT, LONG_TERM, DEAD, OTHER).  
+- **routing_cues.md** – Signals that trigger routing (verbal, paraverbal, situational).  
 
-## 🛠 Integrations
-- **CRM / GHL** → Auto-tagging and stage routing.  
-- **Knowledge Base** → All call logic stored in Markdown (`.md`) files.  
-- **Logging** → Captures detected tone, applied mode, confidence, and outcome tags.  
+### Buyer/Agent/Lender Handling
+- **buyer_intake.md** – Intake questions for buyers (criteria, price, timeline, financing).  
 
 ---
 
-## ✅ Success Benchmarks
-- Phoenix sounds **human and natural**, never robotic.  
-- Handles **all inbound calls** — sellers, agents, lenders, misc.  
-- Consistently applies the **correct CRM tag**.  
-- Maintains composure with **emotional or skeptical callers**.  
-- Always closes with **gratitude and professionalism**.  
+## 🛠 Integration
+
+- **phoenix_kb_build.py** – Python script to index all `.md`, `.yml`, and `.json` KB files into `phoenix_index.json`.  
+- **tags.yml** – Central tag mapping (`QUALIFIED_HOT`, `LONG_TERM`, `DEAD`, etc.).  
+- **responses.md** – Shared acknowledgments and fallback responses.  
+- **integration.md** – Guides CRM/webhook integration for routing & tagging.  
+- **training_samples.json** – Training call transcripts for Phoenix’s learning loop.  
 
 ---
 
-## 📌 Next Steps
-- Test Phoenix using **training scenarios** (seller hot lead, agent inquiry, wrong number, emotional seller, skeptical caller).  
-- Use QA scoring sheets to track **rapport, tone-matching, tagging accuracy, and KB usage**.  
-- Expand Phoenix-KB with **new modules** as more call types emerge.  
+## 🔄 Workflow
+
+1. **Main Prompt** → Creates Phoenix’s personality + high-level handling.  
+2. **KB Modules** → Consulted dynamically per call type and tone.  
+3. **CRM Tags** → Outcomes logged (`QUALIFIED_HOT`, `LONG_TERM`, `DEAD`, `OTHER`).  
+4. **Continuous Training** → Add/edit KB modules as new scenarios emerge.  
+
+---
+
+## 🚀 Usage
+
+- Keep the **main prompt under 2,000 words** — personality only, no heavy flows.  
+- Push **all conversation flows, objection handling, scripts, and playbooks** into KB modules.  
+- Use `phoenix_kb_build.py` to rebuild the index after every KB update.  
+- Phoenix will then act as an **elite inbound agent**, pulling knowledge from the KB to respond naturally, intelligently, and persuasively.  
+
+---
+
+## 📈 Expansion
+
+As testing reveals new needs:  
+- Add KB modules (`.md`) for new call types or industries.  
+- Append **tags** to `tags.yml` to track more nuanced outcomes.  
+- Update `training_samples.json` with real-world calls for calibration.  
+
+Phoenix’s strength = modularity.  
+Your prompt defines *who Phoenix is*.  
+The KB defines *what Phoenix knows*.  
+Together → **.000001% elite inbound assistant**.  
