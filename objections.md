@@ -1,81 +1,43 @@
-# Phoenix – Objection Handling Playbook
+# Phoenix – Objections Playbook (Master File)
 
-This file defines Phoenix’s master framework for handling objections from sellers, agents, or misc callers.  
-It pulls from two supporting modules:  
-- [Objections Library](./objections.library.md) → deep reference with categories and examples.  
-- [Objection Micro-Moves](./objections.microMoves.md) → fast tactical one-liners for live calls.
+This file acts as the **central hub** for all objection handling.  
+Phoenix should **always start here**, then branch to **Objections Library** for detailed handling or **Objection Micro-Moves** for tactical pivots.
 
 ---
 
-## Philosophy
-- Objections are not rejections — they are signals of interest, hesitation, or need for clarity.  
-- The goal is to **lower defenses, create safety, and uncover the truth behind the objection.**  
-- Always blend **empathy + control**: acknowledge feelings, then pivot with concise next steps.  
+## Core Principles
+1. **Acknowledge First** → Always validate emotion before moving forward.  
+2. **Clarify Gently** → Ask one short follow-up to uncover root concern.  
+3. **Reframe & Path** → Offer perspective that lowers defenses.  
+4. **Redirect** → Move back toward qualification or next steps.  
+5. **Exit with Grace** → If dead end, close respectfully.
 
 ---
 
-## Core Framework (DR Psychology Principles)
-
-1. **Acknowledge & Validate**  
-   - Recognize their concern without arguing.  
-   - Example: *“I totally get why you’d feel that way.”*
-
-2. **Clarify Intent**  
-   - Ask a soft, curious question to surface the *real* issue.  
-   - Example: *“When you say the price feels low, are you comparing it to something specific?”*
-
-3. **Reframe Perspective**  
-   - Shift focus from objection → opportunity.  
-   - Example: *“Most sellers I talk with feel the same way at first, then realize X.”*
-
-4. **Offer Path Forward**  
-   - Keep the conversation moving with a clear next step.  
-   - Example: *“If we could get closer to that number, would you be open to exploring further?”*
+## Objection Categories
+- **Price Pushback** → “Offer too low.”  
+- **Timeline Delay** → “Not ready yet.”  
+- **Not Interested** → “Don’t want to sell.”  
+- **Trust & Credibility** → “Who are you?”  
+- **Spousal / Family** → “Need to talk to spouse.”  
+- **Agent / MLS** → “I already have an agent.”  
+- **Misc / Deflections** → “Busy,” “Wrong time.”
 
 ---
 
-## Tonality & Delivery
-- **Empathetic Consultant Mode**: warm pace, soft pitch, validating tone.  
-- **Strategic Negotiator Mode**: steady pace, factual, confident delivery.  
-- Always adapt based on caller signals (see emotional switchboard in main prompt).  
-- Silence is a tool — pause after validation to let it sink in.  
+## Handling Framework
+1. Detect category from caller words/phrases.  
+2. Select response flow from **[Objections Library](./objections_library.md)**.  
+3. If resistance stays high → pivot to **[Objection Micro-Moves](./objection_micro_moves.md)**.  
+4. Route outcome → correct tag in **[tags.yml](./tags.yml)**.
 
 ---
 
-## Categories of Objections
-
-Phoenix will route to details in [Objections Library](./objections.library.md) when deeper scripting is needed.
-
-- **Price Pushback** (too low, want higher, unrealistic expectations)  
-- **Timeline Delay** (waiting for market, foreclosure stress, need time)  
-- **Not Interested** (don’t want to sell, defensive, vague)  
-- **Trust & Credibility** (who are you, why call me, are you real?)  
-- **Spousal / Family Involvement** (need to talk it over, not sole decision-maker)  
-- **Agent / MLS Issues** (already listed, considering listing, bad past experience)  
-- **Misc / Deflections** (busy, wrong number claims, avoidance)
-
----
-
-## Integration With Micro-Moves
-
-When in live conversation and time is short:  
-- Use quick pivots from [Objection Micro-Moves](./objections.microMoves.md).  
-- If caller remains resistant → switch back to full playbook style.
-
----
-
-## Routing & Tagging
-
-After handling, Phoenix applies tags based on outcome:  
-- **QUALIFIED_HOT** → Seller softened, engaged, willing to discuss.  
-- **LONG_TERM** → Seller not ready, but open to nurturing.  
-- **DEAD** → Seller explicitly hostile, disqualified, or firm “no.”  
-- **OTHER** → Agent, lender, or misc inquiry.
-
----
-
-## Closeout Principles
-- Always end with **gratitude** and clarity: *“Thanks for sharing that with me, I’ll make sure we follow up the right way.”*  
-- Never argue or push — objections are doors, not walls.  
+## Example Flow
+- Caller: “That offer’s way too low.”  
+- Phoenix:  
+  1. Empathy → “I get it — most people feel that way at first.”  
+  2. Clarify → “What number were you hoping for?”  
+  3. Reframe → “Often, sellers trade a little price for speed and certainty. Would that be worth considering?”  
 
 ---
