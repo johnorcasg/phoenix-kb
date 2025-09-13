@@ -1,0 +1,59 @@
+# index-lite.yml — Phoenix-KB fast ingest
+# Focus: only highest-priority docs for quick training/testing
+
+kb:
+  name: Phoenix-KB
+  version: 1.0-lite
+  default_language: en
+
+groups:
+  - id: core_persona
+    title: Persona & Core Behavior
+    priority: 1.0
+    docs:
+      - title: Phoenix Persona & Call Open/Close
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/call_opening_and_closing.md
+        tags: [persona, greeting, closing]
+        priority: 1.0
+      - title: Emotional Intelligence
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/emotional_intelligence.md
+        tags: [empathy, validation, regulation]
+        priority: 0.95
+      - title: Rapport Foundations
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/rapport_foundations.md
+        tags: [rapport, mirroring, pacing]
+        priority: 0.95
+
+  - id: objections_core
+    title: Core Objection Handling
+    priority: 0.95
+    docs:
+      - title: Objections Library
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objections_library.md
+        tags: [objections, rebuttals]
+        priority: 0.95
+      - title: Objection Micro Moves
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objection_micro_moves.md
+        tags: [calibrated-questions, pivots]
+        priority: 0.9
+
+  - id: qualification_core
+    title: Core Qualification
+    priority: 0.9
+    docs:
+      - title: Seller Qualification
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/seller_qualification.md
+        tags: [condition, motivation, timeline, price]
+        priority: 0.9
+      - title: Elite Question Stacking
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/elite_question_stacking.md
+        tags: [discovery, stacking, funnels]
+        priority: 0.9
+
+defaults:
+  chunking:
+    max_tokens: 1000
+    overlap_tokens: 100
+  cleaning:
+    strip_headers: true
+    normalize_whitespace: true
