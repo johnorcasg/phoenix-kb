@@ -1,66 +1,66 @@
-# Phoenix – Objection Moves Cheat Sheet
+# Phoenix – Objections Library
 
-Quick reference guide for handling common seller objections.  
-Tone must stay human, relaxed, and professional — never scripted.
-
----
-
-## Core Principles
-- **Validate first** → Show you heard them.  
-- **Pivot softly** → Give options without pressure.  
-- **Exit gracefully** → Leave door open if not a fit.  
-- **Always tag outcome** (HOT, LONG_TERM, DEAD, WRONG_CONTACT).
+This file expands on the [Objections Playbook](./objections.md) with deeper scripts and variations.
 
 ---
 
-## Rapid Micro-Moves
-
-### When They Say *“Not Interested”*
-- “Totally fine, thanks for letting me know.” → Tag `DEAD` or `LONG_TERM`.  
-- “No worries — timing has to feel right.” → Tag `LONG_TERM`.
-
-### When They Say *“Price Too Low”*
-- “I hear you — nobody wants a lowball.”  
-- “That makes sense. Everyone wants fair value.”  
-→ Probe gently if they’ll share what “fair” means.
-
-### When They Say *“Not Now / Bad Timing”*
-- “Understood, timing’s a big factor.”  
-- “Got it, sometimes it’s just not the right moment.”  
-→ Tag `LONG_TERM`.
-
-### When They Say *“Need to Talk to Family”*
-- “Of course — big decisions are family ones.”  
-- “Totally makes sense to check with them first.”  
-→ Offer callback, tag `LONG_TERM`.
-
-### When They Say *“Stop Calling / Wrong Number”*
-- “Got it, I’ll make sure this is updated.”  
-- “No worries — thanks for letting me know.”  
-→ Tag `WRONG_CONTACT` or `DEAD`.
-
-### When They Say *“Just Send an Offer”*
-- “I can’t toss out a number blind, but once I know the basics, we can keep it quick.”  
-- “That’s fair — usually we just start with a short call or visit to get the info right.”  
-→ If open, move into qualification. If resistant, tag `LONG_TERM`.
+## Price Pushback
+**Caller:** “That’s way too low.”  
+**Phoenix:**  
+- Empathy → “I hear you.”  
+- Clarify → “What figure were you hoping for?”  
+- Reframe → “Speed and certainty sometimes matter more than top dollar — if we gave you that, would you stay open?”
 
 ---
 
-## Emergency De-Escalation Lines
-Use when caller is heated, defensive, or frustrated:
-- “I get it — no stress, I’ll keep this quick.”  
-- “Totally fine — I’ll step back if this isn’t helpful.”  
-- “No problem, thanks for the clarity.”  
+## Timeline Delay
+**Caller:** “Not ready yet.”  
+**Phoenix:**  
+- Empathy → “Totally fine — timing has to feel right.”  
+- Clarify → “What’s the main reason you’re thinking of waiting?”  
+- Reframe → “Some people like to see options now, so when timing’s right, they’re ready.”
 
 ---
 
-## Quick Tagging Map
-- **QUALIFIED_HOT** → Seller open + 4 pillars shared.  
-- **LONG_TERM** → Not now but maybe later.  
-- **DEAD** → Firm no / hostile / not fit.  
-- **WRONG_CONTACT** → Wrong number, no connection.
+## Not Interested
+**Caller:** “Not selling.”  
+**Phoenix:**  
+- Empathy → “Understood.”  
+- Clarify → “Is it just the timing, or no plans at all?”  
+- Reframe → “Fair enough. Would it be okay if I checked in down the road?”
 
 ---
 
-## Flow Reminder
-Validate → Acknowledge → Pivot (if possible) → Tag → Exit/Continue.
+## Trust & Credibility
+**Caller:** “Who are you?”  
+**Phoenix:**  
+- Empathy → “Fair question.”  
+- Clarify → “Have you had a lot of people reaching out lately?”  
+- Reframe → “My partner and I buy in {{contact.city}}. If it’s not a fit, no harm done.”
+
+---
+
+## Spousal / Family
+**Caller:** “Need to talk to spouse.”  
+**Phoenix:**  
+- Empathy → “Totally get it.”  
+- Clarify → “What do you think they’ll want to know most?”  
+- Reframe → “We could set a short call with both of you — that way you hear the same info.”
+
+---
+
+## Agent / MLS
+**Caller:** “I’ll list it with an agent.”  
+**Phoenix:**  
+- Empathy → “Got it, that’s always an option.”  
+- Clarify → “What’s your main goal — top dollar, speed, or hassle-free?”  
+- Reframe → “Sometimes sellers explore both: list it, while also seeing if a direct sale works. Would you be open to that?”
+
+---
+
+## Misc / Deflections
+**Caller:** “Busy now.”  
+**Phoenix:**  
+- Empathy → “Understood, I’ll keep this quick.”  
+- Clarify → “Just confirming if you’re connected with {{contact.address1}}?”  
+- Reframe → “No rush. I can follow up later when it’s easier.”
