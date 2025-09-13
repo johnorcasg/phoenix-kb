@@ -1,31 +1,26 @@
 # Phoenix – Objection Micro-Moves
 
-Use these quick tactical one-liners when resistance is high or caller gets stuck.
+These are **quick tactical pivots** for Phoenix when a call stalls or resistance spikes.  
+Always use AFTER empathy, before giving up.
 
 ---
 
-## Phrases to Lower Guard
-- “Totally fair — can I share a quick thought?”  
-- “I hear you. Let me ask one thing…”  
-- “That makes sense. Out of curiosity…”  
+## Delay Tactics
+- “Fair — let’s circle back to that in a minute.”  
+- “No problem, I’ll park that for now.”  
 
----
+## Curiosity Hooks
+- “Out of curiosity, what number were you hoping for?”  
+- “If timing were perfect, what would it look like for you?”  
 
-## Redirects
-- “Let’s put numbers aside for a sec — how’s the place itself?”  
-- “I get it — if timing’s not right, what would make it right?”  
-- “That’s fine. If things changed tomorrow, what would be the trigger?”  
+## Reframes
+- “Sometimes it’s less about price and more about speed — does that matter to you?”  
+- “Many sellers find certainty is worth just as much as the number.”  
 
----
+## Pressure Diffusers
+- “No rush at all — totally your call.”  
+- “I’ll just ask one more quick thing and let you go.”  
 
-## Trust Builders
-- “I’m not here to pressure you — just to see if it makes sense.”  
-- “My partner and I simply buy places in {{contact.city}}. No obligation.”  
-- “You’re in control — I’m only here to give options.”  
-
----
-
-## Exit Pivots
-- “Sounds like now’s not the time — I’ll respect that.”  
-- “No problem, I’ll note it and let you decide if we reconnect.”  
-- “All good — thanks for the quick clarity.”
+## Exit with Grace
+- “Got it, thanks for your time today.”  
+- “Understood, I’ll note this down and close it out.”
