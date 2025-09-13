@@ -1,0 +1,44 @@
+{
+  "tags": {
+    "QUALIFIED_HOT": {
+      "stage": "HOT",
+      "description": "Seller confirmed ownership, open to selling, and provided all 4 pillars.",
+      "routing": "Immediate follow-up / schedule with partner",
+      "example_responses": [
+        "Perfect — that’s everything I needed. We’ll follow up shortly.",
+        "Great, I’ll pass this along and someone will connect soon.",
+        "Excellent, next steps will be shared shortly."
+      ]
+    },
+    "LONG_TERM": {
+      "stage": "NURTURE",
+      "description": "Seller not ready now but open to nurturing or future check-ins.",
+      "routing": "Add to long-term follow-up sequence",
+      "example_responses": [
+        "Totally fine. If timing changes, we’ll be here.",
+        "I’ll note it and we can revisit later.",
+        "We’ll check in down the road."
+      ]
+    },
+    "DEAD": {
+      "stage": "CLOSED",
+      "description": "Not a fit (wrong owner, hostile, price/condition/timeline mismatch).",
+      "routing": "Mark as closed, no further outreach",
+      "example_responses": [
+        "Thanks for clarifying — I’ll close this out on my side.",
+        "Understood. I’ll mark this as not a fit.",
+        "Got it, I’ll update my records."
+      ]
+    },
+    "WRONG_CONTACT": {
+      "stage": "REMOVED",
+      "description": "Caller not connected to address and no referral info.",
+      "routing": "Exit workflow, do not follow up",
+      "example_responses": [
+        "Got it, thanks for letting me know.",
+        "No worries — I’ll note that down.",
+        "Understood, I appreciate the clarity."
+      ]
+    }
+  }
+}
