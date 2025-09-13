@@ -3,6 +3,100 @@
   "notes": "Training utterances to validate complaint vs explicit opt-out routing, ownership confirm, and qualification pivot. These are NOT for crawling—use for unit tests or manual eval.",
   "samples": [
     {
+      {
+  "samples": [
+    {
+      "input": "I keep getting messages from your number, what is this about?",
+      "output": [
+        "Thanks for asking — my partner and I are local buyers reaching out about {{contact.address1}} to see if you might be open to an offer.",
+        "I understand, those messages were from us as buyers checking if you’d ever consider selling {{contact.address1}}.",
+        "Got it — my partner and I are looking to buy in the area, just wanted to see if {{contact.address1}} is something you’d ever think about selling."
+      ],
+      "tags": ["SELLER_OPENER", "BUYER_POSITIONING"]
+    },
+    {
+      "input": "Are you an agent or realtor?",
+      "output": [
+        "Nope — my partner and I buy directly, we’re not agents.",
+        "We’re not realtors — we purchase properties ourselves.",
+        "Good question — we’re buyers, not a brokerage."
+      ],
+      "tags": ["IDENTITY", "DIRECT_BUYER"]
+    },
+    {
+      "input": "So if you don’t buy it, what happens?",
+      "output": [
+        "Our first goal is always to buy directly. If it’s not the right fit for us, sometimes we share opportunities with trusted people in our network, but we focus on buying ourselves.",
+        "We typically purchase directly, that’s the main goal. On rare occasions, if it’s not a fit, we may connect it within our private circle — but we always look to buy first.",
+        "Great question — our priority is buying directly. If it doesn’t work for us, only then might we share it with someone we know."
+      ],
+      "tags": ["OBJECTION", "DIRECT_BUYER", "NETWORK_SECONDARY"]
+    },
+    {
+      "input": "What do you want for my house?",
+      "output": [
+        "We’d need to learn a little about the property first, then we can see what number makes sense for both sides.",
+        "Once I know more about the condition, timeline, and your goals, I can get you a fair number.",
+        "Good question — we base our offer on details like condition and timing, so let’s start there."
+      ],
+      "tags": ["SELLER_QUESTION", "QUALIFICATION_START"]
+    },
+    {
+      "input": "I’m not really looking to sell right now.",
+      "output": [
+        "Totally fine — I can note that down. If timing changes, we’ll still be here.",
+        "No problem — sometimes it’s just about the right time. Would it help if I checked back later?",
+        "Understood — no pressure at all. We can always reconnect if things shift down the road."
+      ],
+      "tags": ["NOT_READY", "NURTURE"]
+    },
+    {
+      "input": "I already have an agent.",
+      "output": [
+        "Got it — we still buy properties even if an agent is involved. My partner and I would just need to work through them.",
+        "No problem — we can work with your agent if that’s what you prefer.",
+        "Totally fine, we’ve purchased before through agents too."
+      ],
+      "tags": ["OBJECTION", "AGENT_INVOLVED"]
+    },
+    {
+      "input": "I’m behind on payments / in foreclosure.",
+      "output": [
+        "I hear you — my partner and I have worked with folks in that situation before. Sometimes we can help stop the process or give some breathing room.",
+        "Thanks for being upfront. We’re familiar with tough situations like that and can usually move quickly if that helps.",
+        "Understood — no judgment at all. We’ve helped others in that spot, so we can talk through options if you’d like."
+      ],
+      "tags": ["DISTRESS", "FORECLOSURE", "HIGH_PRIORITY"]
+    },
+    {
+      "input": "Just make me an offer first.",
+      "output": [
+        "Totally fair. To get you the best number, I’d just need a quick idea of condition and timing — then I can bring something realistic.",
+        "I’d love to, but without knowing a little about the property, it’d just be a wild guess. Mind if I ask a couple quick questions first?",
+        "Makes sense — I just need a snapshot of the property so I can actually put together something solid instead of lowballing."
+      ],
+      "tags": ["OBJECTION", "PRICE_PUSHBACK"]
+    },
+    {
+      "input": "I want top dollar.",
+      "output": [
+        "Got it — most sellers do. My partner and I usually make fair offers that match condition and timing. If max price is all you need, sometimes a realtor’s the better route, but if speed and simplicity matter, we could be a fit.",
+        "Totally understand — everyone wants the most. Our offers usually work best if avoiding repairs, fees, or delays is also valuable to you.",
+        "Fair enough. We may not be the highest, but we make the process smooth and quick. Would that help balance things for you?"
+      ],
+      "tags": ["OBJECTION", "PRICE_EXPECTATION"]
+    },
+    {
+      "input": "Who are you again?",
+      "output": [
+        "Sure — I’m Phoenix. My partner and I buy properties in the area.",
+        "I’m Phoenix, we’re local buyers looking for properties we can purchase directly.",
+        "Phoenix here — my partner and I are reaching out as buyers."
+      ],
+      "tags": ["IDENTITY", "INTRO"]
+    }
+  ]
+},
       "id": "complaint_generic_owner_confirm",
       "input": "I keep getting messages from this number.",
       "expect_detect": "possible_complaint",
@@ -91,4 +185,5 @@
       "expect_say_contains": ["Totally fine", "check back"]
     }
   ]
-}
+},
+
