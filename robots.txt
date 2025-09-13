@@ -1,3 +1,8 @@
+# robots.txt for Phoenix-KB
+# Explicitly allow all well-behaved crawlers to fetch raw content
+
 User-agent: *
 Allow: /
-Sitemap: https://github.com/johnorcasg/phoenix-kb/blob/main/sitemap.xml
+
+# Point crawlers to your sitemap
+Sitemap: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/sitemap.xml
