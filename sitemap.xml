@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/index.html</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/tags.yml</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/responses.md</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/objections.md</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/rapport.md</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/prosody.md</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/routing.md</loc></url>
+  <url><loc>https://<YOUR-USER>.github.io/<YOUR-REPO>/training-samples.json</loc></url>
+  <!-- add more as needed -->
+</urlset>
