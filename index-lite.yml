@@ -1,9 +1,9 @@
-# index-lite.yml — Phoenix-KB fast ingest
-# Focus: only highest-priority docs for quick training/testing
+# index-lite.yml — Phoenix-KB fast ingest (with tags)
+# Focus: core behavior + objections + qualification + CRM tagging
 
 kb:
   name: Phoenix-KB
-  version: 1.0-lite
+  version: 1.1-lite
   default_language: en
 
 groups:
@@ -49,6 +49,15 @@ groups:
         url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/elite_question_stacking.md
         tags: [discovery, stacking, funnels]
         priority: 0.9
+
+  - id: crm_tagging
+    title: CRM Tagging Schema
+    priority: 0.95
+    docs:
+      - title: Tags & Routing
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/tags.yml
+        tags: [tags, routing, crm]
+        priority: 0.95
 
 defaults:
   chunking:
