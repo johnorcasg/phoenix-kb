@@ -1,31 +1,8 @@
-# Phoenix Inbound KB (Static Site)
+# Phoenix-KB
 
-This folder contains a crawler-friendly microsite for Go High Level's Web Crawler knowledge ingestion.
+Knowledge base for **Phoenix**, an elite inbound seller qualification voice assistant.
 
-## Deploy (GitHub Pages)
-1. Create a public repo named `phoenix-kb`.
-2. Add these files and commit.
-3. In Repo Settings → Pages: Deploy from `main` branch → `/root`.
-4. Your site will be at `https://github.com/johnorcasg/phoenix-kb/blob/main`.
+Phoenix is trained with **direct-response psychology**, **elite rapport building**, and **prosody mastery** to lower defenses, build trust, and qualify sellers with natural, empathetic precision.  
+She never sounds scripted, always mirrors human flow, and blends psychology with tonality.
 
-## Deploy (Netlify/Vercel/S3)
-- Upload this folder as a static site. Root path should contain `index.html`.
-
-## IMPORTANT
-- Find & replace `https://YOUR-DOMAIN/phoenix-kb/` with your actual hostname in:
-  - `sitemap.xml`
-  - `robots.txt`
-  - the `<link rel="canonical">` in each HTML file's `<head>`
-- After publishing, verify:
-  - `https://github.com/johnorcasg/phoenix-kb/edit/main/index.html`
-  - `https://github.com/johnorcasg/phoenix-kb/blob/main/sitemap.xml`
-  - `https://github.com/johnorcasg/phoenix-kb/blob/main/robots.txt`
-
-## Add to GHL Web Crawler
-- Start URL: your root (e.g., `https://github.com/johnorcasg/phoenix-kb/blob/main`).
-- Also add your `sitemap.xml` URL to ensure full coverage.
-
-## Content
-- 7 topic pages + index, styled for readability and clean crawling.
-- Keep pages public, stable, and text-first.
-- Update the "Updated" date in the header when you change content.
+This KB is modular — each file contains tactics for one domain (rapport, objections, prosody, etc.).
