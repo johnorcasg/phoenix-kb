@@ -1,0 +1,46 @@
+{
+  "KB": {
+    "Module": "Condition",
+    "Version": "v1.0",
+    "Purpose": "Capture quick snapshot: beds/baths/sqft and big issues. Mandatory pillar before booking.",
+    "Prompts": {
+      "Primary": [
+        "How’s the place—any repairs or updates needed?",
+        "Can you share beds/baths and any major issues?",
+        "What shape is it in—solid, needs work, or heavy repairs?"
+      ],
+      "FollowUps": [
+        "Any roof, foundation, plumbing, or water issues?",
+        "If you had to guess: light, medium, or heavy repairs?"
+      ],
+      "RepairEstimate": [
+        "Ballpark—under $10k, $10–30k, or $30k+?",
+        "Would you call it move-in ready or needs a punch list?"
+      ]
+    },
+    "Normalization": {
+      "ConditionBand": {
+        "MoveInReady": ["updated", "newer", "turnkey"],
+        "Light": ["cosmetic", "paint", "carpet", "minor"],
+        "Medium": ["kitchen", "bath", "hvac", "windows"],
+        "Heavy": ["roof", "foundation", "mold", "fire", "gut"]
+      }
+    },
+    "FieldWrites": {
+      "Contact.ConditionSummary": "Beds/Baths/SqFt + key issues + ConditionBand.",
+      "System.Flags": ["CONDITION_DONE = true"]
+    },
+    "Tags": ["CONDITION_DONE"],
+    "Fallbacks": {
+      "NoDetails": [
+        "Any big-ticket items like roof or foundation?",
+        "Would you say light, medium, or heavy repairs?"
+      ],
+      "TenantOccupied": [
+        "Any known issues from your last walk-through?",
+        "If you had to rate it—light, medium, or heavy repairs?"
+      ]
+    },
+    "KPIs": ["ConditionCaptureRate", "TimeToCondition", "RepairBandCoverage"]
+  }
+}
