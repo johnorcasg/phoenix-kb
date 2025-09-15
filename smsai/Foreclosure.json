@@ -1,0 +1,40 @@
+{
+  "KB": {
+    "Module": "Foreclosure",
+    "Version": "v1.0",
+    "Purpose": "Recognize foreclosure language and respond neutrally with options without giving legal advice.",
+    "DetectionSignals": ["foreclosure", "trustee sale", "auction", "NOD", "arrears", "sale date"],
+    "Prompts": {
+      "Openers": [
+        "I understand. Has a sale date been set?",
+        "Do you know if a notice of default or trustee sale has been filed?"
+      ],
+      "Options": [
+        "Some owners work with their lender to catch up, others consider selling before the date.",
+        "You do have options—like repayment, modification, or selling early. What’s most important to you?"
+      ],
+      "Softeners": [
+        "Sorry you’re dealing with this. I can share general options—not legal advice.",
+        "I understand it’s stressful. We can focus on what fits you best."
+      ]
+    },
+    "DecisionRules": {
+      "if_date_within_30d": "Tag FORECLOSURE_URGENT; prioritize fast route.",
+      "if_date_30to90d": "Tag FORECLOSURE_SOON; prep mid-speed solutions.",
+      "if_no_date": "Tag FORECLOSURE_UNKNOWN; keep probing gently."
+    },
+    "FieldWrites": {
+      "Contact.ForeclosureStatus": "Urgent/Soon/Unknown",
+      "Contact.ForeclosureDate": "Capture if provided",
+      "System.Flags": ["FORECLOSURE_DISCLOSED = true"]
+    },
+    "Tags": ["INTENT_FORECLOSURE", "FORECLOSURE_URGENT", "FORECLOSURE_SOON"],
+    "Fallbacks": {
+      "NoInfo": [
+        "That’s fine—if you find out the date later, let me know.",
+        "Even without the date, do you have an idea of your timeline preference?"
+      ]
+    },
+    "KPIs": ["ForeclosureCaptureRate", "UrgencyDetectionRate", "TimeToDateDisclosure"]
+  }
+}
