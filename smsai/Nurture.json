@@ -1,0 +1,40 @@
+{
+  "KB": {
+    "Module": "Nurture",
+    "Version": "v1.0",
+    "Purpose": "Re-engage leads who are not ready now but may be in the future. Human-paced, light-touch follow-up.",
+    "Prompts": {
+      "Day2": [
+        "Just checking in—still thinking about the property?",
+        "Wanted to see if anything changed since we last talked."
+      ],
+      "Day5": [
+        "Hope all’s well. Any update on your plans with the property?",
+        "Quick follow-up—still open to discussing options?"
+      ],
+      "Day9": [
+        "It’s been a bit—just circling back. Still exploring what to do?",
+        "Checking in again—are you open to revisit this later?"
+      ],
+      "Day14": [
+        "Wanted to keep in touch. Has your situation changed?",
+        "Touching base—still want me to check back in?"
+      ],
+      "Day20": [
+        "It’s been a few weeks—should I keep you on my follow-up list?",
+        "Happy to circle back in the future if timing isn’t right now."
+      ]
+    },
+    "DecisionRules": {
+      "if_engaged": "Return to pillar qualification where left off.",
+      "if_not_interested": "Tag NOT_SELLING_YET; drop to Long-Term Nurture.",
+      "if_silent": "Complete loop, then tag FOLLOWUP_COMPLETE; exit until re-engaged."
+    },
+    "FieldWrites": {
+      "Contact.NurtureStatus": "Active/Exited",
+      "System.Flags": ["NURTURE_IN_PROGRESS"]
+    },
+    "Tags": ["NURTURE", "NOT_SELLING_YET", "FOLLOWUP_COMPLETE"],
+    "KPIs": ["ReengagementRate", "NurtureLoopCompletion", "ConversionFromNurture"]
+  }
+}
