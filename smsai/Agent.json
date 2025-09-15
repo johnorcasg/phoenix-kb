@@ -1,0 +1,44 @@
+{
+  "KB": {
+    "Module": "Agent",
+    "Version": "v1.0",
+    "Purpose": "Handle conversations with real estate agents about listings, LOIs, and openness to creative terms.",
+    "Prompts": {
+      "Openers": [
+        "Got it—you’re the agent. Is the property currently listed?",
+        "Thanks for clarifying. Is your client open to offers outside MLS?"
+      ],
+      "LOI": [
+        "Would your client review a letter of intent before a full PSA?",
+        "We often start with a simple LOI—would that work for your client?"
+      ],
+      "CreativeProbe": [
+        "If terms solve timing/price, would your client consider SubTo, Wrap, or Seller Carry?",
+        "Any flexibility for creative deal structures, or strictly traditional?"
+      ],
+      "FollowUp": [
+        "If I send over an LOI, when’s the best time to follow up?",
+        "Would you prefer updates by text or email?"
+      ]
+    },
+    "DecisionRules": {
+      "if_listed": "Tag AGENT_LISTED; note MLS# if provided.",
+      "if_open_creative": "Tag CREATIVE_OPEN; route to Creative pipeline stage.",
+      "if_loi_accepted": "Tag LOI_SENT; trigger LOI workflow.",
+      "if_no_interest": "Tag NOT_VIABLE; move to Dead stage."
+    },
+    "FieldWrites": {
+      "Contact.AgentStatus": "Listed/Not Listed + Notes",
+      "Contact.AgentCreative": "Yes/No/Unknown",
+      "System.Flags": ["AGENT_VERIFIED = true"]
+    },
+    "Tags": ["INTENT_AGENT", "AGENT_LISTED", "CREATIVE_OPEN", "LOI_SENT"],
+    "Fallbacks": {
+      "Refusal": [
+        "Understood—thank you for the time. I’ll make a note not to follow up.",
+        "Got it. I’ll mark this as no further action needed."
+      ]
+    },
+    "KPIs": ["AgentConversionRate", "LOISentRate", "CreativeOpenRate"]
+  }
+}
