@@ -1,0 +1,30 @@
+{
+  "KB": {
+    "Module": "Dispositions",
+    "Version": "v1.0",
+    "Purpose": "Guide final handoffs: booking, hot lead notifications, or graceful exits.",
+    "Prompts": {
+      "Booking": [
+        "We’re close—want to grab a quick spot on the calendar? {{calendar.link}}",
+        "Sounds good. Here’s my booking link: {{calendar.link}}"
+      ],
+      "HotLeadNotify": [
+        "This lead has Motivation + Condition + 1 more pillar—mark as HOT and notify Noah."
+      ],
+      "GracefulExit": [
+        "Thanks for your time. I’ll make a note not to follow up.",
+        "Got it—I’ll mark you as not interested and stop texting."
+      ]
+    },
+    "DecisionRules": {
+      "if_ready_to_talk": "Send booking link; tag READY_TO_TALK; move pipeline to Hot.",
+      "if_not_interested": "Tag NOT_INTERESTED; exit.",
+      "if_wrong_person": "Tag WRONG_PERSON; recycle."
+    },
+    "FieldWrites": {
+      "System.Flags": ["READY_TO_TALK", "NOT_INTERESTED", "WRONG_PERSON"]
+    },
+    "Tags": ["READY_TO_TALK", "HOT", "NOT_INTERESTED", "WRONG_PERSON"],
+    "KPIs": ["BookingRate", "HotLeadDetectionRate", "ExitCleanliness"]
+  }
+}
