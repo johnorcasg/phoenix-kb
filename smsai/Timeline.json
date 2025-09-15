@@ -1,0 +1,44 @@
+{
+  "KB": {
+    "Module": "Timeline",
+    "Version": "v1.0",
+    "Purpose": "Understand urgency, dependencies, and ideal close/move date. Strong driver for deal structure.",
+    "Prompts": {
+      "Primary": [
+        "If it worked out, when would you want everything wrapped up—weeks or months?",
+        "Is there a date you’re aiming for?",
+        "How soon would you ideally like to be done?"
+      ],
+      "Clarifiers": [
+        "Anything you’re waiting on (tenant move-out, probate, new place)?",
+        "Are you flexible on timing if the terms fit, or do you need a firm date?"
+      ],
+      "UrgencyProbe": [
+        "Is there a sale date or deadline coming up?",
+        "Would sooner help, or is later better for you?"
+      ]
+    },
+    "DecisionRules": {
+      "if_urgent_lt_30d": "Mark high priority; consider creative terms to match speed.",
+      "if_30to90d": "Normal priority; align with buyer/closing logistics.",
+      "if_flexible": "Explore terms (rent-back, delayed close).",
+      "if_dependency": "Capture dependency (tenant/probate/relocation) in notes."
+    },
+    "FieldWrites": {
+      "Contact.TimelineTarget": "Concrete date or window + any dependency.",
+      "System.Flags": ["TIMELINE_DONE = true"]
+    },
+    "Tags": ["TIMELINE_DONE"],
+    "Fallbacks": {
+      "Vague": [
+        "Roughly how many weeks or months would work for you?",
+        "Is there anything that must happen before you can close?"
+      ],
+      "NoDeadline": [
+        "Good to know—if terms fit, would sooner or later be better?",
+        "We can be flexible—what’s your ideal window?"
+      ]
+    },
+    "KPIs": ["TimelineCaptureRate", "UrgencyDetectionRate", "TimeToTimeline"]
+  }
+}
