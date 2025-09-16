@@ -1,6 +1,6 @@
 {
   "Phoenix_KB_Index": {
-    "version": "v1.1",
+    "version": "v1.2",
     "last_updated": "2025-09-15",
     "modules": {
       "Core": [
@@ -14,6 +14,7 @@
         "Phoenix_KB_Timeline.json",
         "Phoenix_KB_Price.json",
         "Phoenix_KB_Foreclosure.json",
+        "Phoenix_KB_CreativeFinance.json",
         "Phoenix_KB_Nurture.json",
         "Phoenix_KB_Dispositions.json",
         "Phoenix_KB_Negotiation.json",
@@ -27,9 +28,9 @@
       ]
     },
     "notes": {
-      "Usage": "Each KB file is modular. Phoenix references modules based on context. Updates can be made to one file without impacting others.",
-      "Priorities": "Seller pillar capture (Motivation + Condition + Timeline + Price) is mandatory before booking. Agent, Buyer, Foreclosure, Negotiation, and Objection KBs handle special paths.",
-      "NextSteps": "Potential add-ons: CreativeFinancePlaybooks, AdvancedDispositions (VIP buyers), Multi-Contact Coordination."
+      "Usage": "Each KB file is modular; update modules independently.",
+      "Priorities": "4-pillar capture before booking. CreativeFinance kicks in when terms are mentioned or price is rigid.",
+      "NextSteps": "Optional: add AdvancedDispositions (VIP buyer routing), Multi-Contact Coordination, and Market-Specific Rules."
     }
   }
 }
