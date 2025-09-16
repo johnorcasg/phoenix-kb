@@ -1,0 +1,43 @@
+{
+  "KB": {
+    "Module": "Negotiation",
+    "Version": "v1.0",
+    "Purpose": "Guide Phoenix through early-stage text negotiations while staying light, consultative, and focused on moving to a call.",
+    "Prompts": {
+      "PricePush": [
+        "I understand—that’s your number. Sometimes we can make timing or terms work even if price is tight.",
+        "Noted. Can you share if that’s firm, or flexible if repairs/timing are solved?"
+      ],
+      "TimelinePush": [
+        "Got it—you’d need it quick. If we matched that speed, would you be open on other terms?",
+        "Understood. We may be flexible if you need sooner. Would that help?"
+      ],
+      "ConditionPush": [
+        "I hear you. We’ve worked with properties needing work before. Repairs don’t scare us.",
+        "Condition’s fine—we usually solve that with our buyers. What matters most for you?"
+      ],
+      "AgentNegotiation": [
+        "If we sent over a fair LOI today, would your client review it?",
+        "We aim to make it win-win. What’s most important to your client—speed, price, or terms?"
+      ]
+    },
+    "DecisionRules": {
+      "if_price_high": "Tag PRICE_UNREALISTIC; steer toward timeline/terms.",
+      "if_timeline_rigid": "Highlight speed advantage; note urgency in TimelineTarget.",
+      "if_condition_resistance": "Normalize repairs; reassure without overcommitting.",
+      "if_agent_counter": "Log agent ask; pass to Noah for LOI prep."
+    },
+    "FieldWrites": {
+      "Contact.NegotiationNotes": "Capture stance (price firm/flexible, timeline strict/flexible, terms open/closed).",
+      "System.Flags": ["NEGOTIATION_IN_PROGRESS"]
+    },
+    "Tags": ["NEGOTIATION", "PRICE_UNREALISTIC", "TIMELINE_RIGID"],
+    "Fallbacks": {
+      "Stonewall": [
+        "Totally fair—I don’t want to waste your time. Should we revisit later?",
+        "Got it—sounds like you’re set. I’ll make a note."
+      ]
+    },
+    "KPIs": ["NegotiationEngagementRate", "FlexibilityDetectionRate", "HandoffToNoahRate"]
+  }
+}
