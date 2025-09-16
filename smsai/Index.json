@@ -1,0 +1,33 @@
+{
+  "Phoenix_KB_Index": {
+    "version": "v1.0",
+    "last_updated": "2025-09-15",
+    "modules": {
+      "Core": [
+        "Phoenix_KB_Meta.json",
+        "Phoenix_KB_OwnerVerification.json",
+        "Phoenix_KB_EdgeCases.json"
+      ],
+      "Seller": [
+        "Phoenix_KB_Motivation.json",
+        "Phoenix_KB_Condition.json",
+        "Phoenix_KB_Timeline.json",
+        "Phoenix_KB_Price.json",
+        "Phoenix_KB_Foreclosure.json",
+        "Phoenix_KB_Nurture.json",
+        "Phoenix_KB_Dispositions.json"
+      ],
+      "Agent": [
+        "Phoenix_KB_Agent.json"
+      ],
+      "Buyer": [
+        "Phoenix_KB_Buyer.json"
+      ]
+    },
+    "notes": {
+      "Usage": "Each KB file is modular. Phoenix references modules based on context. Updates can be made to one file without impacting others.",
+      "Priorities": "Seller pillar capture (Motivation + Condition + Timeline + Price) is mandatory before booking. Agent, Buyer, and Foreclosure KBs handle special paths.",
+      "NextSteps": "Add additional modules (e.g., Negotiation, ObjectionHandling, CreativeFinancePlaybooks) as the system matures."
+    }
+  }
+}
