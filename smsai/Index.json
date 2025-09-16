@@ -1,40 +1,40 @@
-\{
+{
   "Phoenix_KB_Index": {
-    "version": "v1.3",
+    "version": "v1.4",
     "last_updated": "2025-09-15",
     "modules": {
       "Core": [
-        "Phoenix_KB_Meta.json",
-        "Phoenix_KB_OwnerVerification.json",
-        "Phoenix_KB_EdgeCases.json"
+        "meta.json",
+        "ownerverification.json",
+        "edgecases.json"
       ],
       "Seller": [
-        "Phoenix_KB_Motivation.json",
-        "Phoenix_KB_Condition.json",
-        "Phoenix_KB_Timeline.json",
-        "Phoenix_KB_Price.json",
-        "Phoenix_KB_Foreclosure.json",
-        "Phoenix_KB_CreativeFinance.json",
-        "Phoenix_KB_Nurture.json",
-        "Phoenix_KB_Dispositions.json",
-        "Phoenix_KB_Negotiation.json",
-        "Phoenix_KB_ObjectionHandling.json"
+        "motivation.json",
+        "condition.json",
+        "timeline.json",
+        "price.json",
+        "foreclosure.json",
+        "creativefinance.json",
+        "nurture.json",
+        "dispositions.json",
+        "negotiation.json",
+        "objectionhandling.json"
       ],
       "Agent": [
-        "Phoenix_KB_Agent.json"
+        "agent.json"
       ],
       "Buyer": [
-        "Phoenix_KB_Buyer.json",
-        "Phoenix_KB_AdvancedDispositions.json"
+        "buyer.json",
+        "advanceddispositions.json"
       ],
       "MultiContact": [
-        "Phoenix_KB_MultiContactCoordination.json"
+        "multicontactcoordination.json"
       ]
     },
     "notes": {
-      "Usage": "Each KB file is modular. Phoenix references modules based on context. Updates can be made independently.",
-      "Priorities": "Pillar capture before booking (Motivation + Condition + Timeline/Price). Creative Finance unlocks flexibility. Negotiation and Objections keep deals alive.",
-      "NextSteps": "Draft and deploy Advanced Dispositions (VIP buyer matching, buyer preference tiers) and Multi-Contact Coordination (owner + spouse + heirs + tenants)."
+      "Usage": "Each KB file maps directly to /smsai/{file_name}.json in the repo.",
+      "Priorities": "Capture 4 seller pillars before booking. CreativeFinance triggers when terms or price rigidity is detected.",
+      "NextSteps": "Wire actions/workflows; optional state-specific foreclosure playbooks or Creative Finance deep dives."
     }
   }
 }
