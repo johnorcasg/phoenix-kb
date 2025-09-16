@@ -1,0 +1,77 @@
+{
+  "KB": {
+    "Module": "MultiContactCoordination",
+    "Version": "v1.0",
+    "Purpose": "Enable Phoenix to manage multiple stakeholders tied to one property (spouse, heirs, co-owners, tenants). Capture names, roles, and contact info while keeping the conversation coherent.",
+    "ContactTypes": {
+      "SpouseOrPartner": "Husband, wife, partner with joint decision authority.",
+      "HeirOrRelative": "Inherited/probate property; multiple heirs or POA involved.",
+      "CoOwner": "Joint ownership (friends, siblings, business partners).",
+      "TenantOrOccupant": "Rents or lives in property but not decision-maker."
+    },
+    "Prompts": {
+      "SpouseOrPartner": [
+        "Totally understand. Should we loop your spouse/partner into the chat?",
+        "Would you like me to note both of you as contacts for the property?"
+      ],
+      "HeirOrRelative": [
+        "Got it. Who’s the main decision-maker for the estate?",
+        "Should I note the other heirs or just coordinate with you?"
+      ],
+      "CoOwner": [
+        "Makes sense. Should I reach out to your co-owner too?",
+        "What’s the best way to coordinate between you and the other owner?"
+      ],
+      "TenantOrOccupant": [
+        "Thanks for sharing. Are you the owner or just renting?",
+        "Do you know how I can best reach the property owner?"
+      ],
+      "General": [
+        "Who else should be included in this conversation about the property?",
+        "Do you prefer I coordinate with you only, or involve others?"
+      ]
+    },
+    "DecisionRules": {
+      "if_spouse": "Capture spouse name; create Contact2; tag MULTICONTACT_SPOUSE.",
+      "if_heir": "Capture heir/POA; create Contact2/3; tag MULTICONTACT_HEIR.",
+      "if_coowner": "Capture co-owner; tag MULTICONTACT_COOWNER; route shared updates.",
+      "if_tenant": "Tag TENANT_OCCUPANT; request owner info; exit if no owner connection.",
+      "if_multiple": "Tag MULTICONTACT_ACTIVE; maintain all linked contacts."
+    },
+    "FieldWrites": {
+      "Contact2.Name": "Full name of second decision-maker.",
+      "Contact2.Role": "Spouse | Heir | CoOwner | Tenant",
+      "Contact2.Phone/Email": "Capture if provided.",
+      "Contact3.*": "Repeat if additional heir/co-owner provided.",
+      "System.Flags": ["MULTICONTACT_ACTIVE = true"]
+    },
+    "Tags": [
+      "MULTICONTACT_ACTIVE",
+      "MULTICONTACT_SPOUSE",
+      "MULTICONTACT_HEIR",
+      "MULTICONTACT_COOWNER",
+      "TENANT_OCCUPANT"
+    ],
+    "Fallbacks": {
+      "Refusal": [
+        "Understood—I’ll just coordinate with you directly.",
+        "No problem, I’ll keep it simple with you as point of contact."
+      ],
+      "Ambiguous": [
+        "Just to confirm, are you the only owner, or do others share title?",
+        "Should I note anyone else involved for accuracy?"
+      ]
+    },
+    "KPIs": [
+      "AdditionalContactCaptureRate",
+      "DecisionMakerIdentificationRate",
+      "HeirCoordinationRate",
+      "TenantToOwnerConversionRate"
+    ],
+    "OperationalNotes": {
+      "OwnershipProof": "If probate/heir: ask gently about authority (executor, POA).",
+      "CRMMapping": "Always create new contact records for spouse/heir/co-owner; link to same Opportunity.",
+      "DataHygiene": "Do not overwrite Contact1; create Contact2/3 fields to preserve clarity."
+    }
+  }
+}
