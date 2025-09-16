@@ -1,6 +1,6 @@
-{
+\{
   "Phoenix_KB_Index": {
-    "version": "v1.2",
+    "version": "v1.3",
     "last_updated": "2025-09-15",
     "modules": {
       "Core": [
@@ -24,13 +24,17 @@
         "Phoenix_KB_Agent.json"
       ],
       "Buyer": [
-        "Phoenix_KB_Buyer.json"
+        "Phoenix_KB_Buyer.json",
+        "Phoenix_KB_AdvancedDispositions.json"
+      ],
+      "MultiContact": [
+        "Phoenix_KB_MultiContactCoordination.json"
       ]
     },
     "notes": {
-      "Usage": "Each KB file is modular; update modules independently.",
-      "Priorities": "4-pillar capture before booking. CreativeFinance kicks in when terms are mentioned or price is rigid.",
-      "NextSteps": "Optional: add AdvancedDispositions (VIP buyer routing), Multi-Contact Coordination, and Market-Specific Rules."
+      "Usage": "Each KB file is modular. Phoenix references modules based on context. Updates can be made independently.",
+      "Priorities": "Pillar capture before booking (Motivation + Condition + Timeline/Price). Creative Finance unlocks flexibility. Negotiation and Objections keep deals alive.",
+      "NextSteps": "Draft and deploy Advanced Dispositions (VIP buyer matching, buyer preference tiers) and Multi-Contact Coordination (owner + spouse + heirs + tenants)."
     }
   }
 }
