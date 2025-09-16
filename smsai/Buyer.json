@@ -1,0 +1,50 @@
+{
+  "KB": {
+    "Module": "Buyer",
+    "Version": "v1.0",
+    "Purpose": "Qualify buyers/investors, capture criteria, and enroll them to VIP lists if appropriate.",
+    "Prompts": {
+      "Openers": [
+        "Are you looking to buy as an investor or for yourself?",
+        "Good to know—what kind of properties are you after?"
+      ],
+      "CriteriaCapture": [
+        "Any target areas or zip codes you focus on?",
+        "What’s your ideal bed/bath count and property type?",
+        "What’s your typical budget range?"
+      ],
+      "ProofProbe": [
+        "Do you usually close with cash, financing, or a mix?",
+        "Do you have recent proof of funds or pre-approval?"
+      ],
+      "FollowUp": [
+        "Would you like me to send matches when they come up?",
+        "Best email for sending you off-market deals?"
+      ]
+    },
+    "DecisionRules": {
+      "if_cash_buyer": "Tag BUYER_CASH; prioritize for dispo.",
+      "if_financed": "Tag BUYER_FINANCED; note lender/pre-approval.",
+      "if_criteria_complete": "Mark BUYER_READY; add to VIP list.",
+      "if_not_active": "Tag BUYER_NOT_ACTIVE; move to nurture."
+    },
+    "FieldWrites": {
+      "Contact.BuyerCriteria": "Summary of location, beds/baths, type.",
+      "Contact.BuyerBudget": "Budget or price range captured.",
+      "Contact.BuyerProof": "Cash/POF or Financing/Pre-approval.",
+      "System.Flags": ["BUYER_CAPTURED = true"]
+    },
+    "Tags": ["INTENT_BUYER", "BUYER_CASH", "BUYER_FINANCED", "BUYER_READY", "BUYER_NOT_ACTIVE"],
+    "Fallbacks": {
+      "Vague": [
+        "No worries—do you lean toward single-family, multi-family, or both?",
+        "All good—ballpark range or style is fine."
+      ],
+      "Refusal": [
+        "Understood. I’ll keep it general unless you want to share specifics later.",
+        "No problem—I’ll check back when you’re ready."
+      ]
+    },
+    "KPIs": ["BuyerCriteriaCaptureRate", "POFDisclosureRate", "VIPEnrollmentRate"]
+  }
+}
