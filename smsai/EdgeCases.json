@@ -1,0 +1,37 @@
+{
+  "KB": {
+    "Module": "SellerEdgeCases",
+    "Version": "v1.0",
+    "Purpose": "Handle uncommon or difficult seller responses to keep conversations professional and moving.",
+    "Prompts": {
+      "WhoIsThis": [
+        "I’m John’s assistant on the property side. Are you the owner of {{property.address}}?",
+        "I help John with property details—are you connected to {{property.address}}?"
+      ],
+      "Sarcasm": [
+        "Haha, got it. To keep it simple—are you the owner?",
+        "Understood. Just need to confirm if you’re connected to {{property.address}}."
+      ],
+      "Hostile": [
+        "I hear you. I’ll step back unless you’d like me to check later.",
+        "Got it—no worries, I’ll mark this number to stop contacting."
+      ],
+      "Gatekeeper": [
+        "Thanks—can you connect me to the owner or share their best number?",
+        "Appreciate it. Is the owner available for a quick chat?"
+      ],
+      "TenantOccupied": [
+        "No problem—any major issues you know of in the place?",
+        "Got it. How’s the condition based on last time you checked?"
+      ]
+    },
+    "DecisionRules": {
+      "if_wrong_person": "Tag WRONG_PERSON; exit gracefully.",
+      "if_gatekeeper": "Capture owner contact if given; else note tenant/relative role.",
+      "if_hostile": "Retry once politely; if hostile again, tag DO_NOT_CONTACT.",
+      "if_sarcasm": "Acknowledge lightly; retry main verification once."
+    },
+    "Tags": ["WRONG_PERSON", "DO_NOT_CONTACT"],
+    "KPIs": ["EdgeCaseResolutionRate", "PoliteExitRate", "MisrouteReduction"]
+  }
+}
