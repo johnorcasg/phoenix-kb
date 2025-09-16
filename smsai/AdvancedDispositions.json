@@ -1,0 +1,169 @@
+{
+  "KB": {
+    "Module": "AdvancedDispositions",
+    "Version": "v1.0",
+    "Purpose": "Match qualified deals to VIP buyers with fast, compliant routing. Capture interest, manage soft commits, and escalate to assignment.",
+    "Prereqs": {
+      "DealIntelRequired": [
+        "Contact.PropertyAddress",
+        "Contact.ConditionSummary",
+        "Contact.TimelineTarget",
+        "Contact.PriceExpectations",
+        "Contact.TermsOpenness"
+      ],
+      "BuyerIntelRequired": [
+        "Contact.BuyerCriteria",
+        "Contact.BuyerBudget",
+        "Contact.BuyerProof"
+      ]
+    },
+    "BuyerTiers": {
+      "VIP_A": "Cash + verifiable POF ≤ 7 days old; proven close; responsive",
+      "VIP_B": "Cash/Hard money + POF ≤ 30 days; decent responsiveness",
+      "VIP_C": "Finance-dependent or unverified; slower comms"
+    },
+    "Prompts": {
+      "WarmIntro": [
+        "I have a property that may fit your buy box. Want quick details?",
+        "Potential match just came in—do you want the quick specs?"
+      ],
+      "DealBlast": [
+        "{{addr}} | {{beds}}/{{baths}} {{sqft}} | Est. repairs: {{repairs}} | Asking: {{ask}} | ARV: {{arv}} | Access: {{access}} | Reply YES for packet."
+      ],
+      "PacketSend": [
+        "Here’s the packet: {{deal.packet_url}} (photos, comps, est. repairs, terms).",
+        "Deal info: {{deal.packet_url}} — reply with questions."
+      ],
+      "SoftCommit": [
+        "If interested, reply ‘HOLD’ and your offer number. Soft holds expire in {{hold_hours}} hours.",
+        "To hold, send OFFER + amount + close timing. First verified funds wins."
+      ],
+      "POFRequest": [
+        "Please send recent POF (≤ {{pof_days}} days).",
+        "Need current POF or lender letter to proceed."
+      ],
+      "Clarifiers": [
+        "What’s your max all-in for this deal?",
+        "Any deal-breakers (area, repairs, tenant/eviction)?"
+      ],
+      "CounterOrBestAndFinal": [
+        "Multiple buyers in—share best & final by {{deadline}}.",
+        "Tight window—what’s the strongest you can do if you like it?"
+      ],
+      "AssignmentNextSteps": [
+        "Great—next step is assignment paperwork. Best email + entity name?",
+        "Locking it in—confirm title company preference if any."
+      ],
+      "PassPolitely": [
+        "All good—will keep you in mind for the next match.",
+        "Noted. I’ll tag your preferences and circle back with better fits."
+      ]
+    },
+    "DecisionRules": {
+      "Tiering": {
+        "if_cash_and_pof_7d": "Set BuyerTier = VIP_A",
+        "if_cash_or_hm_pof_30d": "Set BuyerTier = VIP_B",
+        "else": "Set BuyerTier = VIP_C"
+      },
+      "DealFit": {
+        "if_matches_zip_and_type_and_budget": "Tag BUYER_MATCH; send WarmIntro → DealBlast",
+        "if_partial_fit": "Ask clarifier; if still partial, move to PassPolitely"
+      },
+      "SoftHold": {
+        "if_reply_HOLD_or_OFFER": "Create SoftHold with expiry; request fresh POF if missing; move to best & final if multiple"
+      },
+      "Assignment": {
+        "if_verified_pof_and_terms_agreed": "Collect entity, signatory, email; trigger assignment packet; notify Noah; move Opportunity → Assigned"
+      },
+      "Deadlines": {
+        "if_no_response_by_expiry": "Expire SoftHold; notify next-in-line by tier",
+        "if_title_blocker": "Notify buyer; pause clock; resume when cleared"
+      }
+    },
+    "FieldWrites": {
+      "Deal.Fields": [
+        "Deal.AskingPrice",
+        "Deal.ARV",
+        "Deal.RepairsEstimate",
+        "Deal.Access (vacant/appt/lockbox/tenant)",
+        "Deal.PacketURL",
+        "Deal.MandatoryTerms (as-is, post-occupancy, assignment-friendly)"
+      ],
+      "Buyer.Fields": [
+        "Buyer.Tier (VIP_A|VIP_B|VIP_C)",
+        "Buyer.POFStatus (Fresh|Stale|Missing)",
+        "Buyer.OfferAmount",
+        "Buyer.HoldExpiry",
+        "Buyer.PreferencesNotes"
+      ]
+    },
+    "Tags": {
+      "Deal": [
+        "DEAL_READY",
+        "DEAL_BLASTED",
+        "SOFTHOLD_ACTIVE",
+        "BEST_AND_FINAL",
+        "ASSIGNMENT_PENDING",
+        "ASSIGNED",
+        "DEAL_FALLTHROUGH"
+      ],
+      "Buyer": [
+        "BUYER_MATCH",
+        "BUYER_PASSED",
+        "VIP_A",
+        "VIP_B",
+        "VIP_C"
+      ]
+    },
+    "Notifications": {
+      "Internal": [
+        "On SOFTHOLD_ACTIVE → SMS/Email Noah with buyer, amount, expiry",
+        "On ASSIGNMENT_PENDING → send checklist to Noah + Title"
+      ],
+      "External": [
+        "Auto-send packet on YES",
+        "Auto-expiry notice to buyer when hold lapses"
+      ]
+    },
+    "Compliance": {
+      "Do": [
+        "Share accurate, current deal info",
+        "Label estimates (ARV/repairs) as estimates",
+        "Honor opt-out requests immediately"
+      ],
+      "Dont": [
+        "Guarantee profits or outcomes",
+        "Share seller PII in blasts",
+        "Disparage other buyers"
+      ]
+    },
+    "KPIs": [
+      "MatchRate (buyers contacted → interested)",
+      "POFComplianceRate",
+      "SoftHoldToAssignmentRate",
+      "TimeToAssignment",
+      "FallthroughRate",
+      "VIPResponseTime"
+    ],
+    "OperationalNotes": {
+      "PacketChecklist": [
+        "Photos/Video",
+        "Comp summary",
+        "Repair scope bands",
+        "Access instructions",
+        "Title/assignment OK note",
+        "Offer deadline & instructions"
+      ],
+      "TieBreakers": [
+        "Tier (VIP_A>B>C)",
+        "Offer net",
+        "Close speed",
+        "Clean contingencies"
+      ],
+      "Defaults": {
+        "hold_hours": 6,
+        "pof_days": 7
+      }
+    }
+  }
+}
