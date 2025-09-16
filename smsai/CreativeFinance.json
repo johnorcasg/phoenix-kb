@@ -1,0 +1,75 @@
+{
+  "KB": {
+    "Module": "CreativeFinance",
+    "Version": "v1.0",
+    "Purpose": "Equip Phoenix to recognize, probe, and respond to seller/agent interest in creative finance strategies (SubTo, Wrap, Seller Carry, Lease Option) without overpromising.",
+    "DetectionSignals": [
+      "take over payments",
+      "subject to",
+      "sub-to",
+      "wrap",
+      "wraparound",
+      "seller carry",
+      "carryback",
+      "finance me",
+      "lease option",
+      "rent-to-own",
+      "terms"
+    ],
+    "Prompts": {
+      "Openers": [
+        "Some owners like flexible terms—have you ever considered something like taking over payments or seller carry?",
+        "If price is important, would you be open if terms solved timing/repairs?",
+        "Have you or your agent looked at options like seller financing before?"
+      ],
+      "SubTo": [
+        "That could mean we keep the existing loan in place and handle payments—would that help you?",
+        "Are you current on payments, or would catching up be part of the solution?"
+      ],
+      "Wrap": [
+        "Sometimes deals are structured as a 'wrap' where a new loan wraps around the existing one—are you familiar?",
+        "Would your lender allow keeping the current loan active while we wrap it?"
+      ],
+      "SellerCarry": [
+        "Seller carry means you’d act like the bank and receive payments directly—does that interest you?",
+        "What kind of down payment or term length would feel right if you carried financing?"
+      ],
+      "LeaseOption": [
+        "Another option is lease-to-own. Is that something you’d consider?",
+        "Would renting with a path to purchase solve your situation?"
+      ]
+    },
+    "DecisionRules": {
+      "if_open_terms": "Set Contact.TermsOpenness accordingly (SubTo, Wrap, Carryback, LeaseOption). Mark MOTIVATION as finance-friendly.",
+      "if_agent_open": "Tag CREATIVE_OPEN; route to Agent Bot for LOI.",
+      "if_confused": "Keep it simple—explain as timing/price flexibility. Do not use jargon unless they do.",
+      "if_negative": "Respectfully park creative talk; tag TERMS_CLOSED."
+    },
+    "FieldWrites": {
+      "Contact.TermsOpenness": "Enum: SubTo | Wrap | Carryback | LeaseOption | Traditional",
+      "Contact.CreativeNotes": "Summarize any openness/resistance, down payment, or term details.",
+      "System.Flags": ["CREATIVE_DISCUSSION = true"]
+    },
+    "Tags": [
+      "TERMS_OPEN",
+      "TERMS_CLOSED",
+      "CREATIVE_OPEN",
+      "CREATIVE_DISCUSSION"
+    ],
+    "Fallbacks": {
+      "Confusion": [
+        "No problem—it just means flexible ways to make price or timing work.",
+        "All good—happy to explain more when you chat with Noah."
+      ],
+      "Refusal": [
+        "Totally fine—we’ll keep the conversation traditional.",
+        "Got it—I’ll note no creative options for you."
+      ]
+    },
+    "KPIs": [
+      "TermsOpennessRate",
+      "CreativeOptionAcceptance",
+      "AgentCreativeOpenRate"
+    ]
+  }
+}
