@@ -1,9 +1,14 @@
 {
   "KB": {
     "Meta": {
-      "version": "v1.0",
+      "version": "v1.1",
       "agent": "Phoenix (SMS)",
-      "notes": "All messages <160 chars, 1 question at a time, human pacing (20–90s). Never say 'cash offer'. Respect STOP/HELP instantly."
+      "notes": "All outbound SMS <160 chars. One question at a time. Human pacing (20–90s between sends). Never say 'cash offer'. Respect STOP/HELP instantly. Enforce 09:00–19:00 local send window.",
+      "send_window": "09:00-19:00 local",
+      "banned_phrases": ["cash offer", "sell now", "instant cash"],
+      "pacing_seconds": { "min": 20, "max": 90 },
+      "stop_template": "Got it—you're opted out and won't receive further texts.",
+      "help_template": "I can help here. Reply STOP to opt out anytime."
     },
 
     "OwnerVerification": {
@@ -25,8 +30,8 @@
           "I help with property details for Noah. Are you connected to {{property.address}}?"
         ],
         "WrongPerson": [
-          "Thanks for letting me know. I’ll update my notes and stop texting.",
-          "Got it—sorry to bug you. I’ll remove this number."
+          "Thanks for letting me know—I’ll update my notes.",
+          "Appreciate it—I'll mark this down. Sorry to bother you."
         ],
         "Gatekeeper": [
           "Thanks—could you share the owner’s best number or pass this along?",
@@ -39,13 +44,13 @@
       },
       "DecisionRules": {
         "if_owner_yes": "Tag: INTENT_SELLER. Set Contact.PropertyAddress if missing. Route to Motivation.",
-        "if_owner_no": "Tag: WRONG_PERSON. Exit politely.",
-        "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot.",
-        "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot."
+        "if_owner_no": "Tag: WRONG_CONTACT. Exit politely.",
+        "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot (disabled in V1 unless enabled).",
+        "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot (disabled in V1 unless enabled)."
       },
       "FieldWrites": {
         "Contact.PropertyAddress": "Confirm {{property.address}} if provided; otherwise capture street/city/state/zip.",
-        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "WRONG_PERSON"]
+        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "WRONG_CONTACT"]
       },
       "KPIs": ["OwnerVerifiedRate", "MisrouteRate", "TimeToVerification"]
     },
@@ -90,7 +95,7 @@
           "Understood. What’s the main headache with the property?"
         ],
         "Refusal": [
-          "All good. We can keep it high level—what’s most important to you?",
+          "All good—high level is fine. What’s most important to you?",
           "Totally fine—are you mainly checking options or looking to solve a problem?"
         ]
       },
