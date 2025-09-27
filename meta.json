@@ -42,16 +42,17 @@
           "Got it. Just to confirm—do you own or manage {{property.address}}?"
         ]
       },
-      "DecisionRules": {
-        "if_owner_yes": "Tag: INTENT_SELLER. Set Contact.PropertyAddress if missing. Route to Motivation.",
-        "if_owner_no": "Tag: wrong number. Exit politely.",
-        "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot (disabled in V1 unless enabled).",
-        "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot (disabled in V1 unless enabled)."
+     "DecisionRules": {
+  "if_owner_yes": "Tag: INTENT_SELLER. Set Contact.PropertyAddress if missing. Route to Motivation.",
+  "if_owner_no": "Tag: WRONG_NUMBER. Exit politely.",
+  "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot (disabled in V1 unless enabled).",
+  "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot (disabled in V1 unless enabled)."
+}
       },
-      "FieldWrites": {
-        "Contact.PropertyAddress": "Confirm {{property.address}} if provided; otherwise capture street/city/state/zip.",
-        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "wrong number"]
-      },
+"FieldWrites": {
+  "Contact.PropertyAddress": "Confirm {{property.address}} if provided; otherwise capture street/city/state/zip.",
+  "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER"]
+},
       "KPIs": ["OwnerVerifiedRate", "MisrouteRate", "TimeToVerification"]
     },
 
