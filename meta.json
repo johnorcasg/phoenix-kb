@@ -1,0 +1,143 @@
+{
+  "KB": {
+    "Meta": {
+      "version": "v1.0",
+      "agent": "Phoenix (SMS)",
+      "notes": "All messages <160 chars, 1 question at a time, human pacing (20–90s). Never say 'cash offer'. Respect STOP/HELP instantly."
+    },
+
+    "OwnerVerification": {
+      "Purpose": "Confirm role (owner/agent/buyer/other) and property link. Cleanly exit wrong numbers; route correct ones.",
+      "DetectionSignals": {
+        "owner_yes": ["yes", "yeah", "i am", "it's mine", "we own", "my house"],
+        "owner_no": ["no", "wrong number", "not me", "don't own", "tenant"],
+        "agent": ["i'm the agent", "listing agent", "my client", "broker"],
+        "buyer": ["cash buyer", "looking to buy", "criteria", "investor list"]
+      },
+      "Prompts": {
+        "Openers": [
+          "Quick question—are you connected to {{property.address}}?",
+          "Trying to reach the person linked to {{property.address}}. Is that you?",
+          "Are you the owner of the place near {{property.address}}?"
+        ],
+        "WhoIsThis": [
+          "I’m Noah’s assistant on the property side. Are you the owner of {{property.address}}?",
+          "I help with property details for Noah. Are you connected to {{property.address}}?"
+        ],
+        "WrongPerson": [
+          "Thanks for letting me know. I’ll update my notes and stop texting.",
+          "Got it—sorry to bug you. I’ll remove this number."
+        ],
+        "Gatekeeper": [
+          "Thanks—could you share the owner’s best number or pass this along?",
+          "Appreciate it. Can you connect me to the owner?"
+        ],
+        "Ambiguous": [
+          "No worries—are you the owner, agent, or neither for {{property.address}}?",
+          "Got it. Just to confirm—do you own or manage {{property.address}}?"
+        ]
+      },
+      "DecisionRules": {
+        "if_owner_yes": "Tag: INTENT_SELLER. Set Contact.PropertyAddress if missing. Route to Motivation.",
+        "if_owner_no": "Tag: WRONG_PERSON. Exit politely.",
+        "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot.",
+        "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot."
+      },
+      "FieldWrites": {
+        "Contact.PropertyAddress": "Confirm {{property.address}} if provided; otherwise capture street/city/state/zip.",
+        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "WRONG_PERSON"]
+      },
+      "KPIs": ["OwnerVerifiedRate", "MisrouteRate", "TimeToVerification"]
+    },
+
+    "Motivation": {
+      "Purpose": "Discover why they’d move and what success looks like. Mandatory pillar before booking.",
+      "Prompts": {
+        "Primary": [
+          "What’s making you consider a move—timing, payments, or just exploring options?",
+          "If you sold, what’s the main thing you’d want to solve?",
+          "Curious—what’s pushing the idea of selling right now?"
+        ],
+        "Clarifiers": [
+          "Got it. Is it mostly financial stress, property condition, or a life change?",
+          "Makes sense. What would a ‘win’ look like for you?"
+        ],
+        "Softening": [
+          "Totally understand. High level is fine—what’s the biggest factor?",
+          "No pressure—just the main reason helps."
+        ]
+      },
+      "Classification": {
+        "Financial": ["behind", "arrears", "payments", "job loss", "taxes", "foreclosure"],
+        "Condition": ["repairs", "needs work", "foundation", "roof", "water damage"],
+        "Lifestyle": ["relocating", "downsizing", "upgrading", "school", "divorce", "new job"],
+        "OwnershipChange": ["inherited", "probate", "tenant issues", "landlord tired"]
+      },
+      "DecisionRules": {
+        "if_financial_terms_ok": "Flag TermsOpenness as SubTo/Wrap/Carryback candidate.",
+        "if_condition_heavy": "Note repair items; prep for Condition deep dive.",
+        "if_lifestyle": "Note timeline sensitivity; prep Timeline probe.",
+        "if_inherited": "Note probate/authority; collect decision-maker."
+      },
+      "FieldWrites": {
+        "Contact.Motivation": "Concise summary (category + 1–2 details).",
+        "System.Flags": ["MOTIVATION_DONE = true"]
+      },
+      "Tags": ["MOTIVATION_DONE"],
+      "Fallbacks": {
+        "Vague": [
+          "No worries—what would you want to change about the situation?",
+          "Understood. What’s the main headache with the property?"
+        ],
+        "Refusal": [
+          "All good. We can keep it high level—what’s most important to you?",
+          "Totally fine—are you mainly checking options or looking to solve a problem?"
+        ]
+      },
+      "KPIs": ["MotivationCaptureRate", "TimeToMotivation", "TermsOpennessDetectedRate"]
+    },
+
+    "Condition": {
+      "Purpose": "Capture quick snapshot: beds/baths/sqft and any big issues. Mandatory pillar before booking.",
+      "Prompts": {
+        "Primary": [
+          "How’s the place—any repairs or updates needed?",
+          "Can you share beds/baths and any major issues?",
+          "What shape is it in—solid, needs work, or heavy repairs?"
+        ],
+        "FollowUps": [
+          "Any roof, foundation, plumbing, or water issues to note?",
+          "If you had to guess, light, medium, or heavy repairs?"
+        ],
+        "RepairEstimate": [
+          "Ballpark—under $10k, $10–30k, or $30k+ in repairs?",
+          "Would you call it move-in ready or needs a punch list?"
+        ]
+      },
+      "Normalization": {
+        "ConditionBand": {
+          "MoveInReady": ["updated", "newer", "turnkey"],
+          "Light": ["cosmetic", "paint", "carpet", "minor"],
+          "Medium": ["kitchen", "bath", "hvac", "windows"],
+          "Heavy": ["roof", "foundation", "mold", "fire", "gut"]
+        }
+      },
+      "FieldWrites": {
+        "Contact.ConditionSummary": "Beds/Baths/SqFt + key issues + ConditionBand.",
+        "System.Flags": ["CONDITION_DONE = true"]
+      },
+      "Tags": ["CONDITION_DONE"],
+      "Fallbacks": {
+        "NoDetails": [
+          "No problem—any big-ticket items like roof or foundation?",
+          "Got it. Would you say light, medium, or heavy repairs?"
+        ],
+        "TenantOccupied": [
+          "All good—any known issues from your last walk-through?",
+          "If you had to rate it, light, medium, or heavy repairs?"
+        ]
+      },
+      "KPIs": ["ConditionCaptureRate", "TimeToCondition", "RepairBandCoverage"]
+    }
+  }
+}
