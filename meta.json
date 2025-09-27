@@ -144,6 +144,5 @@
         ]
       },
       "KPIs": ["ConditionCaptureRate", "TimeToCondition", "RepairBandCoverage"]
-    }
+    },
   }
-}
