@@ -44,13 +44,13 @@
       },
       "DecisionRules": {
         "if_owner_yes": "Tag: INTENT_SELLER. Set Contact.PropertyAddress if missing. Route to Motivation.",
-        "if_owner_no": "Tag: WRONG_CONTACT. Exit politely.",
+        "if_owner_no": "Tag: wrong number. Exit politely.",
         "if_agent": "Tag: INTENT_AGENT. Route to Agent Bot (disabled in V1 unless enabled).",
         "if_buyer": "Tag: INTENT_BUYER. Route to Buyer Bot (disabled in V1 unless enabled)."
       },
       "FieldWrites": {
         "Contact.PropertyAddress": "Confirm {{property.address}} if provided; otherwise capture street/city/state/zip.",
-        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "WRONG_CONTACT"]
+        "System.Intents": ["INTENT_SELLER", "INTENT_AGENT", "INTENT_BUYER", "wrong number"]
       },
       "KPIs": ["OwnerVerifiedRate", "MisrouteRate", "TimeToVerification"]
     },
