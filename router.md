@@ -47,7 +47,7 @@ Use the trimmed **Call Open/Close** file: one question per turn, short sentences
 
 **Branching:**
 - If `owner_yes` → set `OWNER_VERIFIED`, `INTENT_SELLER` → go to **Pillars**.
-- If `owner_no` → set `WRONG_CONTACT` → **exit politely**.
+- If `owner_no` → set `WRONG_NUMBER` → **exit politely**.
 - If `agent` → set `INTENT_AGENT` → **handoff path** (disabled in V1 unless enabled).
 - If `buyer` → set `INTENT_BUYER` → **handoff path** (disabled in V1 unless enabled).
 - If `ambiguous` → ask a single clarifier → then decide.
@@ -86,7 +86,7 @@ Use the trimmed **Call Open/Close** file: one question per turn, short sentences
 
 **NOT_OWNER**
 - **Condition:** `owner_no` or confirmed wrong number.
-- **Actions:** set `wrong number`; stage → **REMOVED**; exit.
+- **Actions:** set `WRONG_NUMBER`; stage → **REMOVED**; exit.
 
 **AGENT_ROUTE / BUYER_ROUTE**
 - **Condition:** `agent` / `buyer` identified.
@@ -117,7 +117,7 @@ Use the trimmed **Call Open/Close** file: one question per turn, short sentences
 
 - `QUAL_READY` → stage **HOT** → schedule / notify  
 - `PILLARS_MISSING` → stage **NURTURE** → nudge once @ +24h then pause  
-- `WRONG_CONTACT` → stage **REMOVED** → stop comms  
+- `WRONG_NUMBER` → stage **REMOVED** → stop comms + trigger your number-rotation workflow  
 - `DO_NOT_CONTACT` → stage **CLOSED** → stop comms + DNC  
 - `INTENT_AGENT` / `INTENT_BUYER` / `TENANT_OCCUPANT` → stage **MISC** (no seller flow)
 
