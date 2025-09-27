@@ -1,0 +1,70 @@
+{
+  "KB": {
+    "Module": "ObjectionHandling",
+    "Version": "v1.0",
+    "Purpose": "Handle common seller objections by acknowledging, clarifying, reframing, and redirecting back to qualification or booking.",
+    "ObjectionCategories": {
+      "PriceTooLow": {
+        "Prompts": [
+          "I understand—it’s natural to want top dollar. Sometimes timing or terms matter more. What’s most important to you?",
+          "Noted. If repairs/timing were solved, would that change things?"
+        ],
+        "Tags": ["OBJECTION_PRICE"]
+      },
+      "NotReadyYet": {
+        "Prompts": [
+          "Totally fine—many owners explore early. Do you have a rough timeline in mind?",
+          "Makes sense. Should I check back in a few weeks or months?"
+        ],
+        "Tags": ["OBJECTION_TIMELINE"]
+      },
+      "Don’tTrustYou": {
+        "Prompts": [
+          "Fair point—I’m just here to gather info so Noah can review with you directly.",
+          "That’s why we usually start with a simple intro call—quick and no obligation."
+        ],
+        "Tags": ["OBJECTION_TRUST"]
+      },
+      "NeedToTalkToSpouse": {
+        "Prompts": [
+          "Of course. Should we loop them in on a quick call?",
+          "Makes sense—would it help if I sent you a link you can review together?"
+        ],
+        "Tags": ["OBJECTION_SPOUSE"]
+      },
+      "AgentAlready": {
+        "Prompts": [
+          "Totally fine—we work with agents often. Would you be open if the offer makes sense?",
+          "Thanks for sharing. Does your agent allow creative offers?"
+        ],
+        "Tags": ["OBJECTION_AGENT"]
+      }
+    },
+    "CorePrinciples": [
+      "Acknowledge first",
+      "Clarify gently with one follow-up",
+      "Reframe toward timing, terms, or motivation",
+      "Redirect to booking or nurture",
+      "Exit gracefully if dead end"
+    ],
+    "DecisionRules": {
+      "if_price_objection": "Shift to Motivation or Timeline probe.",
+      "if_timeline_objection": "Tag NOT_READY; move to Nurture.",
+      "if_trust_objection": "Offer low-commitment call; route to Noah.",
+      "if_spouse_objection": "Offer to include spouse; delay until joint call.",
+      "if_agent_objection": "Tag INTENT_AGENT; route to Agent Bot."
+    },
+    "FieldWrites": {
+      "Contact.ObjectionNotes": "Summary of objection + Phoenix response.",
+      "System.Flags": ["OBJECTION_HANDLED"]
+    },
+    "Tags": [
+      "OBJECTION_PRICE",
+      "OBJECTION_TIMELINE",
+      "OBJECTION_TRUST",
+      "OBJECTION_SPOUSE",
+      "OBJECTION_AGENT"
+    ],
+    "KPIs": ["ObjectionResolutionRate", "RedirectSuccessRate", "GracefulExitRate"]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "KB": {
+    "Module": "Price",
+    "Version": "v1.0",
+    "Purpose": "Surface price expectations and test flexibility on terms without promising a 'cash offer'.",
+    "Prompts": {
+      "Primary": [
+        "Do you have a price range in mind, even ballpark?",
+        "What number would make it a yes for you?",
+        "Is there a range you’d feel good about?"
+      ],
+      "FlexProbe": [
+        "If timing/repairs were handled, would you be open on price or terms?",
+        "Is price firm, or flexible if we solve timing/repairs?"
+      ],
+      "TermsProbe": [
+        "Would you consider options like taking over payments or seller carry if the terms worked?",
+        "Open to creative terms, or prefer a simple, traditional route?"
+      ]
+    },
+    "DecisionRules": {
+      "if_price_given": "Record range and any notes on firmness.",
+      "if_price_refused": "Park price; advance terms conversation (Timeline/Condition leverage).",
+      "if_terms_open": "Set TermsOpenness accordingly: SubTo, Wrap, Carryback, LeaseOption, Traditional.",
+      "if_price_unrealistic": "Acknowledge; set expectation to review details before numbers."
+    },
+    "FieldWrites": {
+      "Contact.PriceExpectations": "Range + firmness context (e.g., 'wants X if fast/repairs handled').",
+      "Contact.TermsOpenness": "Enum: SubTo | Wrap | Carryback | LeaseOption | Traditional",
+      "System.Flags": ["PRICE_DONE = true"]
+    },
+    "Tags": ["PRICE_DONE"],
+    "Fallbacks": {
+      "NoNumber": [
+        "Totally fine—are you more focused on timing, repairs, or the number?",
+        "We can circle back—what would make this feel like a win?"
+      ],
+      "DeflectToTerms": [
+        "If timing/repairs worked for you, would that make you flexible on price?",
+        "Some sellers prefer better terms over a perfect number—does that fit you?"
+      ]
+    },
+    "KPIs": ["PriceCaptureRate", "TermsOpennessRate", "TimeToPrice"]
+  }
+}

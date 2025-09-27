@@ -1,0 +1,50 @@
+{
+  "KB": {
+    "Module": "Motivation",
+    "Version": "v1.0",
+    "Purpose": "Discover why they'd sell and what 'win' means. Mandatory pillar before booking.",
+    "Prompts": {
+      "Primary": [
+        "What’s making you consider a move—timing, payments, or just exploring options?",
+        "If you sold, what’s the main thing you’d want to solve?",
+        "Curious—what’s pushing the idea of selling right now?"
+      ],
+      "Clarifiers": [
+        "Got it. Is it mostly financial stress, property condition, or a life change?",
+        "Makes sense—what would a ‘win’ look like for you?"
+      ],
+      "Softeners": [
+        "High level is fine—what’s the biggest factor?",
+        "No pressure—just the main reason helps."
+      ]
+    },
+    "Classification": {
+      "Financial": ["behind", "arrears", "payments", "taxes", "foreclosure", "job loss"],
+      "Condition": ["repairs", "needs work", "foundation", "roof", "water damage"],
+      "Lifestyle": ["relocating", "downsizing", "upgrading", "school", "divorce", "new job"],
+      "OwnershipChange": ["inherited", "probate", "tenant issues", "landlord tired"]
+    },
+    "DecisionRules": {
+      "if_financial": "Flag TermsOpenness candidate (SubTo/Wrap/Carryback). Prep Timeline follow-up.",
+      "if_condition": "Prep Condition deep dive. Note major items.",
+      "if_lifestyle": "Prep Timeline question; note flexibility/constraints.",
+      "if_inherited": "Capture decision-maker/authority; ask probate status."
+    },
+    "FieldWrites": {
+      "Contact.Motivation": "Category + 1–2 specifics in one concise sentence.",
+      "System.Flags": ["MOTIVATION_DONE = true"]
+    },
+    "Tags": ["MOTIVATION_DONE"],
+    "Fallbacks": {
+      "Vague": [
+        "What would you most want to change about the situation?",
+        "What’s the main headache with the place?"
+      ],
+      "Refusal": [
+        "Totally fine—are you mainly checking options or solving a problem?",
+        "All good—what’s most important to you if you did sell?"
+      ]
+    },
+    "KPIs": ["MotivationCaptureRate", "TimeToMotivation", "TermsOpennessDetectedRate"]
+  }
+}
