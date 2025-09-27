@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Root index -->
+  <url>
+    <loc>https://johnorcasg.github.io/phoenix-kb/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Core pages -->
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/README</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/agent_handling</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/responses</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/seller_qualification</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/routing_cues</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/pro_routing</loc></url>
+
+  <!-- Communication & Psychology -->
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/rapport_foundations</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/rapport_playbook</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/trust_blueprints</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/prosody_precision</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/prosody_tone_guidance</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/emotional_intelligence</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/objection_micro_moves</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/objections_library</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/elite_question_stacking</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/buyer_intake_dr_psych_principles</loc></url>
+
+  <!-- Mirrors for data files (HTML-renderable) -->
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/tags</loc></url>
+  <url><loc>https://johnorcasg.github.io/phoenix-kb/training_samples</loc></url>
+</urlset>
