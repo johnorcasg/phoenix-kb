@@ -21,12 +21,12 @@
       "set_when": ["OWNER_VERIFIED", "PILLARS_LT3_OR_MISSING_MC"],
       "actions": ["nudge_once_24h_then_pause"]
     },
-    "WRONG_CONTACT": {
-      "stage": "REMOVED",
-      "description": "Number not connected to the property and no referral info.",
-      "set_when": ["NOT_OWNER_CONFIRMED"],
-      "actions": ["exit_conversation"]
-    },
+ "WRONG_NUMBER": {
+  "stage": "REMOVED",
+  "description": "Number not connected to the property (treat as wrong number).",
+  "set_when": ["NOT_OWNER_CONFIRMED"],
+  "actions": ["exit_conversation", "trigger_number_rotation_workflow"]
+},
     "DO_NOT_CONTACT": {
       "stage": "CLOSED",
       "description": "STOP/DNC request or hard refusal.",
