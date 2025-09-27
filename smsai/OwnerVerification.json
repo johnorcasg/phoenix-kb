@@ -1,0 +1,21 @@
+{
+  "KB": {
+    "OwnerVerification": {
+      "Prompts": [
+        "Hi, quick question—are you connected to the property at {{property.address}}?",
+        "Trying to reach the person tied to that property—does it belong to you?"
+      ],
+      "EdgeCases": {
+        "WhoIsThis": "I’m Noah’s assistant on the property side.",
+        "WrongPerson": "Thanks—I'll update my notes. Sorry to bother you."
+      }
+    },
+    "Motivation": {
+      "Prompts": [
+        "What’s making you consider a move?",
+        "If you sold, what would you want to solve?"
+      ],
+      "Tags": ["MOTIVATION_DONE"]
+    }
+  }
+}
