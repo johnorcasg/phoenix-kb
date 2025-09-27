@@ -1,6 +1,3 @@
-# index-lite.yml — Phoenix-KB fast ingest (with tags)
-# Focus: core behavior + objections + qualification + CRM tagging
-
 kb:
   name: Phoenix-KB
   version: 1.1-lite
@@ -11,58 +8,58 @@ groups:
     title: Persona & Core Behavior
     priority: 1.0
     docs:
-      - title: Phoenix Persona & Call Open/Close
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/call_opening_and_closing.md
+      - title: Call Open/Close
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/call_opening_and_closing.md
         tags: [persona, greeting, closing]
         priority: 1.0
-      - title: Emotional Intelligence
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/emotional_intelligence.md
-        tags: [empathy, validation, regulation]
-        priority: 0.95
-      - title: Rapport Foundations
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/rapport_foundations.md
-        tags: [rapport, mirroring, pacing]
-        priority: 0.95
+      - title: Router (V1)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/router.md
+        tags: [routing, outcomes, tags]
+        priority: 1.0
 
   - id: objections_core
-    title: Core Objection Handling
+    title: Objection Handling
     priority: 0.95
     docs:
-      - title: Objections Library
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objections_library.md
-        tags: [objections, rebuttals]
+      - title: Objections (JSON)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/ObjectionHandling.json
+        tags: [objections, redirects]
         priority: 0.95
-      - title: Objection Micro Moves
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/objection_micro_moves.md
-        tags: [calibrated-questions, pivots]
-        priority: 0.9
 
   - id: qualification_core
-    title: Core Qualification
-    priority: 0.9
+    title: Core Qualification (4 Pillars + Owner Verify)
+    priority: 0.95
     docs:
-      - title: Seller Qualification
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/seller_qualification.md
-        tags: [condition, motivation, timeline, price]
-        priority: 0.9
-      - title: Elite Question Stacking
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/elite_question_stacking.md
-        tags: [discovery, stacking, funnels]
-        priority: 0.9
+      - title: Owner Verification
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/OwnerVerification.json
+        tags: [owner, verification]
+        priority: 1.0
+      - title: Motivation
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/Motivation.json
+        tags: [motivation]
+        priority: 0.98
+      - title: Condition
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/Condition.json
+        tags: [condition]
+        priority: 0.98
+      - title: Timeline
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/Timeline.json
+        tags: [timeline]
+        priority: 0.97
+      - title: Price
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/Price.json
+        tags: [price]
+        priority: 0.97
+      - title: Multi-Contact Coordination
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/smsai/MultiContactCoordination.json
+        tags: [spouse, heir, coowner, tenant]
+        priority: 0.95
 
   - id: crm_tagging
     title: CRM Tagging Schema
-    priority: 0.95
+    priority: 0.9
     docs:
-      - title: Tags & Routing
-        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/tags.yml
+      - title: Tags (Runtime)
+        url: https://raw.githubusercontent.com/johnorcasg/phoenix-kb/main/active/tags.json
         tags: [tags, routing, crm]
-        priority: 0.95
-
-defaults:
-  chunking:
-    max_tokens: 1000
-    overlap_tokens: 100
-  cleaning:
-    strip_headers: true
-    normalize_whitespace: true
+        priority: 0.9
