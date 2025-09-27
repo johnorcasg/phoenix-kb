@@ -7,7 +7,7 @@
 This router aligns to:
 - Pillar KBs: OwnerVerification, Motivation, Condition, Timeline, Price
 - Objections: ObjectionHandling.json (redirects, single clarifier, back to flow)
-- Tags/Stages: QUAL_READY, PILLARS_MISSING, WRONG_CONTACT, DO_NOT_CONTACT (+ intent & multi-contact tags)
+- Tags/Stages: QUAL_READY, PILLARS_MISSING, WRONG NUMBER, DO_NOT_CONTACT (+ intent & multi-contact tags)
 
 ---
 
@@ -86,7 +86,7 @@ Use the trimmed **Call Open/Close** file: one question per turn, short sentences
 
 **NOT_OWNER**
 - **Condition:** `owner_no` or confirmed wrong number.
-- **Actions:** set `WRONG_CONTACT`; stage → **REMOVED**; exit.
+- **Actions:** set `wrong number`; stage → **REMOVED**; exit.
 
 **AGENT_ROUTE / BUYER_ROUTE**
 - **Condition:** `agent` / `buyer` identified.
