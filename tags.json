@@ -1,44 +1,118 @@
 {
+  "version": "v1.0",
+  "notes": "Phoenix V1 runtime tags. Keep names stable during the 10-day sprint.",
+  "stages": {
+    "HOT": "Qualified and ready to schedule",
+    "NURTURE": "Needs follow-up or missing info",
+    "REMOVED": "Not owner / wrong contact",
+    "CLOSED": "Do not contact / hard stop",
+    "MISC": "Non-seller intents or informational"
+  },
   "tags": {
-    "QUALIFIED_HOT": {
+    "QUAL_READY": {
       "stage": "HOT",
-      "description": "Seller confirmed ownership, open to selling, and provided all 4 pillars.",
-      "routing": "Immediate follow-up / schedule with partner",
-      "example_responses": [
-        "Perfect — that’s everything I needed. We’ll follow up shortly.",
-        "Great, I’ll pass this along and someone will connect soon.",
-        "Excellent, next steps will be shared shortly."
-      ]
+      "description": "Owner verified with ≥3 of 4 pillars captured (Motivation + Condition mandatory).",
+      "set_when": ["OWNER_VERIFIED", "PILLARS_3OF4"],
+      "actions": ["attempt_schedule"]
     },
-    "LONG_TERM": {
+    "PILLARS_MISSING": {
       "stage": "NURTURE",
-      "description": "Seller not ready now but open to nurturing or future check-ins.",
-      "routing": "Add to long-term follow-up sequence",
-      "example_responses": [
-        "Totally fine. If timing changes, we’ll be here.",
-        "I’ll note it and we can revisit later.",
-        "We’ll check in down the road."
-      ]
-    },
-    "DEAD": {
-      "stage": "CLOSED",
-      "description": "Not a fit (wrong owner, hostile, price/condition/timeline mismatch).",
-      "routing": "Mark as closed, no further outreach",
-      "example_responses": [
-        "Thanks for clarifying — I’ll close this out on my side.",
-        "Understood. I’ll mark this as not a fit.",
-        "Got it, I’ll update my records."
-      ]
+      "description": "Owner verified but <3 pillars captured or Motivation/Condition missing.",
+      "set_when": ["OWNER_VERIFIED", "PILLARS_LT3_OR_MISSING_MC"],
+      "actions": ["nudge_once_24h_then_pause"]
     },
     "WRONG_CONTACT": {
       "stage": "REMOVED",
-      "description": "Caller not connected to address and no referral info.",
-      "routing": "Exit workflow, do not follow up",
-      "example_responses": [
-        "Got it, thanks for letting me know.",
-        "No worries — I’ll note that down.",
-        "Understood, I appreciate the clarity."
-      ]
+      "description": "Number not connected to the property and no referral info.",
+      "set_when": ["NOT_OWNER_CONFIRMED"],
+      "actions": ["exit_conversation"]
+    },
+    "DO_NOT_CONTACT": {
+      "stage": "CLOSED",
+      "description": "STOP/DNC request or hard refusal.",
+      "set_when": ["STOP_OR_DNC"],
+      "actions": ["confirm_optout", "exit_conversation"]
+    },
+
+    "INTENT_AGENT": {
+      "stage": "MISC",
+      "description": "Responder is an agent representing a seller.",
+      "set_when": ["AGENT_IDENTIFIED"],
+      "actions": ["route_to_DTA_disabled_in_V1"]
+    },
+    "INTENT_BUYER": {
+      "stage": "MISC",
+      "description": "Responder is a buyer/investor.",
+      "set_when": ["BUYER_IDENTIFIED"],
+      "actions": ["route_to_buyer_disabled_in_V1"]
+    },
+    "NOT_SELLING_YET": {
+      "stage": "NURTURE",
+      "description": "Owner verified but not ready to sell now.",
+      "set_when": ["OWNER_VERIFIED", "DECLINES_TIMING_NOW"],
+      "actions": ["enter_nurture_loop_if_enabled"]
+    },
+    "TENANT_OCCUPANT": {
+      "stage": "MISC",
+      "description": "Responder is a tenant/occupant, not the decision-maker.",
+      "set_when": ["TENANT_IDENTIFIED"],
+      "actions": ["request_owner_contact", "exit_if_none"]
+    },
+
+    "MULTICONTACT_ACTIVE": {
+      "stage": "HOT",
+      "description": "Multiple decision-makers tracked for this property.",
+      "set_when": ["SECONDARY_DECISION_MAKER_ADDED"],
+      "actions": ["link_contacts_same_opportunity"]
+    },
+    "MULTICONTACT_SPOUSE": {
+      "stage": "HOT",
+      "description": "Spouse/partner added as Contact2.",
+      "set_when": ["SPOUSE_ADDED"],
+      "actions": ["create_contact2"]
+    },
+    "MULTICONTACT_HEIR": {
+      "stage": "HOT",
+      "description": "Heir/POA added as Contact2/3 (probate/inherited).",
+      "set_when": ["HEIR_OR_POA_ADDED"],
+      "actions": ["create_contact2_or_3"]
+    },
+    "MULTICONTACT_COOWNER": {
+      "stage": "HOT",
+      "description": "Co-owner added and linked.",
+      "set_when": ["COOWNER_ADDED"],
+      "actions": ["create_contact2", "link_contacts"]
+    },
+
+    "OWNER_VERIFIED": {
+      "stage": "HOT",
+      "description": "Boolean signal tag set upon owner confirmation.",
+      "set_when": ["OWNER_YES"],
+      "actions": []
+    },
+    "MOTIVATION_DONE": {
+      "stage": "HOT",
+      "description": "Motivation captured (pillar flag).",
+      "set_when": ["PILLAR_MOTIVATION"],
+      "actions": []
+    },
+    "CONDITION_DONE": {
+      "stage": "HOT",
+      "description": "Condition captured (pillar flag).",
+      "set_when": ["PILLAR_CONDITION"],
+      "actions": []
+    },
+    "TIMELINE_DONE": {
+      "stage": "HOT",
+      "description": "Timeline captured (pillar flag).",
+      "set_when": ["PILLAR_TIMELINE"],
+      "actions": []
+    },
+    "PRICE_DONE": {
+      "stage": "HOT",
+      "description": "Price expectation captured (pillar flag).",
+      "set_when": ["PILLAR_PRICE"],
+      "actions": []
     }
   }
 }
